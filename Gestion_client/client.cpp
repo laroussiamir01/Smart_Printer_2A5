@@ -34,10 +34,11 @@ QSqlQueryModel * client::afficherClient()
 {
     QSqlQueryModel *model=new QSqlQueryModel();
 
-    model->setQuery("select * from client");
+    model->setQuery("select id,cin,nom,prenom from client");
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
-     model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
-      model->setHeaderData(2,Qt::Horizontal,QObject::tr("PRENOM"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("CIN"));
+     model->setHeaderData(2,Qt::Horizontal,QObject::tr("NOM"));
+      model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRENOM"));
 
       return model;
 
@@ -60,8 +61,23 @@ bool client::modifierClient(QString nom, QString prenom , int cin)
              query.bindValue(":nom", nom);
               query.bindValue(":prenom", prenom);
             return    query.exec();
+
 }
 
+QSqlQueryModel *client::rechercher(int q)
+{
+   /* // QString res= QString::number(cin);
+     QSqlQueryModel *model=new QSqlQueryModel();
+      model->setQuery("SELECT * FROM CLIENT  WHERE CIN like '%"+q+"%'" );
+      model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("CIN"));
+      model->setHeaderData(2,Qt::Horizontal,QObject::tr("NOM"));
+      model->setHeaderData(3,Qt::Horizontal,QObject::tr("PRENOM"));
+      model->setHeaderData(4,Qt::Horizontal,QObject::tr("RECLAMATION"));
+      model->setHeaderData(5,Qt::Horizontal,QObject::tr("FIDELITE"));
 
+      return model;
+      */
+}
 
 

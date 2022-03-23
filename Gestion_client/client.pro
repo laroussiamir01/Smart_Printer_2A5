@@ -19,12 +19,16 @@ SOURCES += \
     client.cpp \
     connection.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    recherche_client.cpp \
+    reclamation.cpp
 
 HEADERS += \
     client.h \
     connection.h \
-    mainwindow.h
+    mainwindow.h \
+    recherche_client.h \
+    reclamation.h
 
 FORMS += \
     mainwindow.ui
