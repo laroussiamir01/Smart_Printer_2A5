@@ -34,15 +34,15 @@ private slots:
     void on_generer_clicked();
     void on_generer1_clicked();
 
- //   void on_radioButton_TRInProd_clicked();
+    void on_radioButton_TRInProd_clicked();
 
-  //  void on_radioButton_TRInProdPrix_clicked();
+    void on_radioButton_TRInProdPrix_clicked();
 
-  //   void on_rechercher_clicked();
+     void on_rechercher_clicked();
 
-  //   void on_ProduitNom_rechecher_textChanged(const QString &arg1);
+     void on_ProduitNom_rechecher_textChanged(const QString &arg1);
 
- //    void on_tabWidget_2_currentChanged(int index);
+     void on_tabWidget_2_currentChanged(int index);
 
 
 

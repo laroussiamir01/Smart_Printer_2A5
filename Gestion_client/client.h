@@ -8,12 +8,13 @@
 class client
 {
 private:
-    QString nom, prenom;
-    int id,cin;
+    QString nom, prenom,reclamation;
+    int id,cin,fidele;
 public:
     //constructeurs
-    client(){}
+     client();
     client(int,QString,QString);
+    client(int,QString,QString,int,QString,int);
     //destructeur
     ~client(){}
 
@@ -21,11 +22,18 @@ public:
     QString getNom(){return nom;}
     QString getPrenom(){return prenom;}
     int getCin(){return cin;}
+     int get_Fidele();
+     QString get_Reclamation();
+      int get_Id();
 
     //setters
     void setNom(QString n){nom=n;}
     void setPrenom(QString p){prenom=p;}
     void setCin(int cin){this->cin = cin;}
+    void set_Fidele(int fidele){this->fidele = fidele;}
+     void set_Reclamation(int reclamation){this->reclamation = reclamation;}
+
+
 
     //fonctionnalittés de base relatives a l'entité client
     bool ajouterClient();
@@ -33,9 +41,11 @@ public:
     bool supprimerClient(int);
     bool modifierClient(QString,QString,int);
 
- //   QSqlQueryModel *recherche(const QString &);
- //   QSqlQueryModel * triParNom();
- //   QSqlQueryModel * triParQte();
+    QSqlQueryModel *recherche(const QString &);
+    QSqlQueryModel * triParNom();
+    QSqlQueryModel * triParQte();
+
+     bool PromotionPrix();
 
 
 

@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>30</y>
-      <width>711</width>
-      <height>321</height>
+      <y>20</y>
+      <width>751</width>
+      <height>531</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -35,12 +35,12 @@
        <rect>
         <x>10</x>
         <y>0</y>
-        <width>641</width>
-        <height>301</height>
+        <width>721</width>
+        <height>501</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>7</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -567,8 +567,8 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
          <rect>
           <x>20</x>
           <y>40</y>
-          <width>371</width>
-          <height>121</height>
+          <width>681</width>
+          <height>201</height>
          </rect>
         </property>
        </widget>
@@ -596,8 +596,8 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
        <widget class="QPushButton" name="pushButton_PDFProd">
         <property name="geometry">
          <rect>
-          <x>340</x>
-          <y>180</y>
+          <x>350</x>
+          <y>260</y>
           <width>45</width>
           <height>45</height>
          </rect>
@@ -639,8 +639,8 @@ background-repeat:no-repeat;
        <widget class="QPushButton" name="pushButton">
         <property name="geometry">
          <rect>
-          <x>280</x>
-          <y>180</y>
+          <x>290</x>
+          <y>260</y>
           <width>45</width>
           <height>45</height>
          </rect>
@@ -673,8 +673,8 @@ background-repeat:no-repeat;
        <widget class="QPushButton" name="quitter_afficher">
         <property name="geometry">
          <rect>
-          <x>150</x>
-          <y>190</y>
+          <x>160</x>
+          <y>270</y>
           <width>84</width>
           <height>28</height>
          </rect>
@@ -710,8 +710,8 @@ background-repeat:no-repeat;
        <widget class="QPushButton" name="afficher">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>190</y>
+          <x>60</x>
+          <y>270</y>
           <width>84</width>
           <height>28</height>
          </rect>
@@ -748,8 +748,8 @@ background-repeat:no-repeat;
          <rect>
           <x>10</x>
           <y>20</y>
-          <width>621</width>
-          <height>221</height>
+          <width>701</width>
+          <height>321</height>
          </rect>
         </property>
         <property name="font">
@@ -763,57 +763,6 @@ background-repeat:no-repeat;
         <property name="title">
          <string>Tri</string>
         </property>
-        <widget class="QRadioButton" name="radioButton_TRInProd">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>30</y>
-           <width>82</width>
-           <height>17</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Tri Nom</string>
-         </property>
-        </widget>
-        <widget class="QRadioButton" name="radioButton_TRInProd_3">
-         <property name="geometry">
-          <rect>
-           <x>120</x>
-           <y>30</y>
-           <width>81</width>
-           <height>17</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Tri CIN</string>
-         </property>
-        </widget>
-        <widget class="QTableWidget" name="tableWidget">
-         <property name="geometry">
-          <rect>
-           <x>230</x>
-           <y>10</y>
-           <width>301</width>
-           <height>191</height>
-          </rect>
-         </property>
-         <column>
-          <property name="text">
-           <string>CIN</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Nom</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Prenom</string>
-          </property>
-         </column>
-        </widget>
         <widget class="QPushButton" name="suppProduit_2">
          <property name="geometry">
           <rect>
@@ -879,6 +828,42 @@ background-repeat:no-repeat;
           <bool>false</bool>
          </property>
         </widget>
+        <widget class="QTableView" name="tableView_tri">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>20</y>
+           <width>491</width>
+           <height>271</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_TRInProdPrix">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>40</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Tri Fidele</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_TRInProd">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>40</y>
+           <width>82</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Tri Nom</string>
+         </property>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_4">
@@ -890,8 +875,8 @@ background-repeat:no-repeat;
          <rect>
           <x>10</x>
           <y>20</y>
-          <width>611</width>
-          <height>231</height>
+          <width>691</width>
+          <height>341</height>
          </rect>
         </property>
         <property name="font">
@@ -903,43 +888,6 @@ background-repeat:no-repeat;
         <property name="title">
          <string>Recherche</string>
         </property>
-        <widget class="QLineEdit" name="cin_client_rechireservation">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
-           <y>60</y>
-           <width>91</width>
-           <height>20</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_7">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>60</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>MS Shell Dlg 2</family>
-           <pointsize>8</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel 
-{
-rgb(255, 255, 255)
-font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
-         </property>
-         <property name="text">
-          <string>CIN</string>
-         </property>
-        </widget>
         <widget class="QPushButton" name="rechercher_q">
          <property name="geometry">
           <rect>
@@ -1005,13 +953,50 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
           <bool>true</bool>
          </property>
         </widget>
+        <widget class="QLabel" name="label_7">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>8</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel 
+{
+rgb(255, 255, 255)
+font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
+         </property>
+         <property name="text">
+          <string>Nom</string>
+         </property>
+        </widget>
         <widget class="QTableView" name="tableView_affirechercher">
          <property name="geometry">
           <rect>
-           <x>160</x>
-           <y>20</y>
-           <width>421</width>
-           <height>201</height>
+           <x>150</x>
+           <y>30</y>
+           <width>521</width>
+           <height>241</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="ProduitNom_rechecher">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>60</y>
+           <width>91</width>
+           <height>20</height>
           </rect>
          </property>
         </widget>
@@ -1021,6 +1006,23 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
        <attribute name="title">
         <string>Statistique</string>
        </attribute>
+       <widget class="QFrame" name="aaaaa">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>681</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>17000</width>
+          <height>17000</height>
+         </size>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_31"/>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_9">
        <attribute name="title">
@@ -1056,7 +1058,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
         <widget class="QPushButton" name="pushButton_AjoutProdui_5">
          <property name="geometry">
           <rect>
-           <x>260</x>
+           <x>370</x>
            <y>180</y>
            <width>84</width>
            <height>28</height>
@@ -1087,7 +1089,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
         <widget class="QPushButton" name="pushButton_AjoutProdui_6">
          <property name="geometry">
           <rect>
-           <x>360</x>
+           <x>470</x>
            <y>180</y>
            <width>84</width>
            <height>28</height>
@@ -1126,8 +1128,8 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
           <rect>
            <x>80</x>
            <y>30</y>
-           <width>271</width>
-           <height>61</height>
+           <width>461</width>
+           <height>101</height>
           </rect>
          </property>
         </widget>
@@ -1197,6 +1199,37 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
            <width>81</width>
            <height>20</height>
           </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_AjoutProdui_7">
+         <property name="geometry">
+          <rect>
+           <x>270</x>
+           <y>180</y>
+           <width>84</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Reference Sans Serif</family>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton::hover
+{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.511, x2:1, y2:0.511, stop:0 rgba(0, 207, 179, 255),stop:1 rgb(108, 135, 255));
+
+}</string>
+         </property>
+         <property name="text">
+          <string>Afficher</string>
+         </property>
+         <property name="default">
+          <bool>false</bool>
          </property>
         </widget>
        </widget>

@@ -6,6 +6,22 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QDebug>
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QLegend>
+#include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QValueAxis>
+#include <QtCharts/QHorizontalBarSeries>
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QCategoryAxis>
+#include <QPainter>
+#include <QtCharts>
+
+
+
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -154,6 +170,8 @@ void MainWindow::on_supprimer_r_clicked()
 void MainWindow::on_afficher_clicked()
 {
     ui->tableView->setModel(tmpclient.afficherClient());
+    ui->tableView_affirechercher->setModel(tmpclient.afficherClient());
+    ui->tableView_tri->setModel(tmpclient.afficherClient());
 
 }
 
@@ -254,5 +272,85 @@ void MainWindow::on_generer1_clicked()
             query->exec(sql);
             model->setQuery(*query);
             ui->comboBox_1->setModel(model);
+
+}
+
+
+void MainWindow::on_radioButton_TRInProd_clicked() //tri nom
+{
+    ui->tableView_tri->setModel(tmpclient.triParNom());
+}
+
+
+void MainWindow::on_radioButton_TRInProdPrix_clicked() //tri fidele
+{
+    ui->tableView_tri->setModel(tmpclient.triParQte());
+
+}
+
+
+void MainWindow::on_rechercher_clicked()
+{
+    qDebug()<< "chercher !!" ;
+    QString id=ui->ProduitNom_rechecher->text();
+
+ if(id!="")  { ui->tableView_affirechercher->setModel(tmpclient.recherche(id)); }
+ else{ QMessageBox::information(this,"Pour chercher dans vehicule  il Faut","tapez le Nom");
+     ui->tableView_affirechercher->setModel(tmpclient.afficherClient());
+
+ }
+}
+
+
+void MainWindow::on_ProduitNom_rechecher_textChanged(const QString &arg1)
+{
+    if(arg1==""){    ui->tableView_affirechercher->setModel(tmpclient.afficherClient());    }
+
+}
+
+
+void MainWindow::on_tabWidget_2_currentChanged(int index)
+{
+    ui->tableView->setModel(tmpclient.afficherClient());
+    ui->tableView_affirechercher->setModel(tmpclient.afficherClient());
+    ui->tableView_tri->setModel(tmpclient.afficherClient());
+    //tmpservice.PromotionPrix();
+
+
+            QPieSeries *series = new QPieSeries();
+            series->setHoleSize(0.20);
+
+                QSqlQuery q;
+                q.prepare("select fidele,cin from CLIENT  order by fidele  DESC");
+                if(q.exec())
+              { //  int c=0;
+                 //  qDebug()<<"azazazazazaz";
+                  while (q.next())
+                  {
+                      //qDebug()<<"azazazazazaz";
+                  QString a=q.value(0).toString() ;
+                  float b= q.value(1).toFloat()  ;
+                 // if(c==0)
+                 // {
+                     // QPieSlice *slice =  series->append(a, b );
+                     // slice->setExploded();
+                     // slice->setLabelVisible();
+                  //}
+                 // else
+                 // {
+                      series->append(a+" DT", b );
+                  //}
+              }}
+
+            QChart *chart = new QChart();
+            chart->addSeries(series);
+            chart->setAnimationOptions(QChart::SeriesAnimations);
+            chart->setTitle("donut chart repartition des client par fidele :");
+            chart->setTheme(QChart::ChartThemeLight );
+            QChartView *chartview = new QChartView(chart);
+            chartview->setRenderHint(QPainter::Antialiasing);
+            chart->legend()->setAlignment(Qt::AlignRight);
+            chartview->setParent(ui->aaaaa);
+
 
 }
