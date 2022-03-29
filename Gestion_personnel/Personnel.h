@@ -19,10 +19,14 @@ public:
     QSqlQueryModel * afficherPersonnel();
     bool removePersonnel(int);
    bool modifierPersonnel(QString,QString,int);
+   QSqlQueryModel * rechercher_perso(int cin);
+   QSqlQueryModel *trierAc();
+   QSqlQueryModel * trierDec();
+
    ~Personnel(){}
 
     Personnel();
-public:
+private:
     QString  prenom,nom;
     int cin;
 
