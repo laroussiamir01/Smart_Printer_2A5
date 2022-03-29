@@ -32,7 +32,10 @@ public:
     QSqlQueryModel * afficherClient();
     bool supprimerClient(int);
     bool modifierClient(QString,QString,int);
-     QSqlQueryModel *rechercher(int);
+
+    QSqlQueryModel *recherche(const QString &);
+    QSqlQueryModel * triParNom();
+    QSqlQueryModel * triParQte();
 
 
 
