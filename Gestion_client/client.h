@@ -33,9 +33,9 @@ public:
     bool supprimerClient(int);
     bool modifierClient(QString,QString,int);
 
-    QSqlQueryModel *recherche(const QString &);
-    QSqlQueryModel * triParNom();
-    QSqlQueryModel * triParQte();
+ //   QSqlQueryModel *recherche(const QString &);
+ //   QSqlQueryModel * triParNom();
+ //   QSqlQueryModel * triParQte();
 
 
 
