@@ -4,6 +4,8 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
+
+
 class connexion
 {
     QSqlDatabase db;

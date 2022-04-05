@@ -2,6 +2,8 @@
 #include <QApplication>
 #include <QMessageBox>
 #include "connexion.h"
+using namespace std;
+
 
 
 int main(int argc, char *argv[])
