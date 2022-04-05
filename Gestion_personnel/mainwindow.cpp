@@ -8,6 +8,13 @@
 #include <QSqlRecord>
 #include <QMessageBox>
 #include <iostream>
+#include "stat_combo.h"
+#include <ui_stat_combo.h>
+#include <QTextDocument>
+#include <QPrintDialog>
+#include <QPrinter>
+
+
 
 using std::uint8_t;
 using namespace std;
@@ -52,7 +59,7 @@ void MainWindow::on_ajouter_clicked()
      }
          else
              QMessageBox::critical(nullptr, QObject::tr("ADD"),
-                         QObject::tr("failed.\n"
+                         QObject::tr("Remplissez tous les champs.\n"
                                      "Click Cancel to exit."), QMessageBox::Cancel);
 
 
@@ -176,6 +183,35 @@ void MainWindow::on_pushButton_TriASC_clicked()
 void MainWindow::on_pushButton_TriDESC_clicked()
 {
     ui->tableView_tri->setModel(tmpPersonnel.trierDec());
+}
+void MainWindow::on_ajouter_prime_clicked()
+{
+
+    QSqlQuery query2;
+    int cin,prime;
+
+        cin=ui->lineEdit->text().toInt();
+        prime=ui->lineEdit_2->text().toUInt();
+
+
+       tmpPersonnel.Prime(prime,cin);
+
+       query2.prepare("SELECT CIN FROM personnel WHERE cin = :cin");
+               query2.bindValue(":cin",cin);
+               query2.exec();
+               query2.next();
+}
+
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    stat_combo *s= new stat_combo();
+
+             s->setWindowTitle("statistique ComboBox");
+             s->choix_pie();
+             s->show();
+
 }
 
 

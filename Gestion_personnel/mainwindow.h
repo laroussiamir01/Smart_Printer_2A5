@@ -32,6 +32,11 @@ void on_rechercher_clicked();
 void on_pushButton_TriASC_clicked();
 
 void on_pushButton_TriDESC_clicked();
+void on_ajouter_prime_clicked();
+
+void on_pushButton_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;

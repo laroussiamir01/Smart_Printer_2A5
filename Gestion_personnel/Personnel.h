@@ -22,13 +22,15 @@ public:
    QSqlQueryModel * rechercher_perso(int cin);
    QSqlQueryModel *trierAc();
    QSqlQueryModel * trierDec();
+   bool Prime(int,int);
 
    ~Personnel(){}
 
     Personnel();
 private:
-    QString  prenom,nom;
-    int cin;
+    QString  prenom,nom,date_depart,date_fin;
+    int cin,conge;
+    int prime;
 
 };
 

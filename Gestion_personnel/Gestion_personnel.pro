@@ -1,5 +1,6 @@
 QT       += core gui
 
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -25,14 +26,17 @@ HEADERS += \
     Personnel.h \
     connection.h \
     mainwindow.h \
-    mainwindow.h
+    mainwindow.h \
+    stat_combo.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    stat_combo.ui
 
 CONFIG += console
 QT += sql
-
+QT += charts
+QT += printsupport
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
