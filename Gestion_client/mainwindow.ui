@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>809</width>
+    <width>829</width>
     <height>600</height>
    </rect>
   </property>
@@ -1021,7 +1021,15 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
           <height>17000</height>
          </size>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_31"/>
+        <layout class="QHBoxLayout" name="horizontalLayout_31">
+         <item>
+          <widget class="QPushButton" name="pushButton_3">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_9">
@@ -1055,7 +1063,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
         <property name="title">
          <string>Fidélité</string>
         </property>
-        <widget class="QPushButton" name="pushButton_AjoutProdui_5">
+        <widget class="QPushButton" name="enregister_fidele">
          <property name="geometry">
           <rect>
            <x>370</x>
@@ -1123,21 +1131,11 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
           <bool>false</bool>
          </property>
         </widget>
-        <widget class="QTableView" name="tableView_2">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>30</y>
-           <width>461</width>
-           <height>101</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBox_4">
+        <widget class="QComboBox" name="comboBox_fidele">
          <property name="geometry">
           <rect>
            <x>150</x>
-           <y>150</y>
+           <y>40</y>
            <width>69</width>
            <height>22</height>
           </rect>
@@ -1182,7 +1180,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>150</y>
+           <y>40</y>
            <width>21</width>
            <height>16</height>
           </rect>
@@ -1191,45 +1189,14 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
           <string>CIN</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="LineEditnom_produit_4">
+        <widget class="QLineEdit" name="cin_fidele">
          <property name="geometry">
           <rect>
            <x>50</x>
-           <y>150</y>
+           <y>40</y>
            <width>81</width>
            <height>20</height>
           </rect>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_AjoutProdui_7">
-         <property name="geometry">
-          <rect>
-           <x>270</x>
-           <y>180</y>
-           <width>84</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>MS Reference Sans Serif</family>
-          </font>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::StrongFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton::hover
-{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.511, x2:1, y2:0.511, stop:0 rgba(0, 207, 179, 255),stop:1 rgb(108, 135, 255));
-
-}</string>
-         </property>
-         <property name="text">
-          <string>Afficher</string>
-         </property>
-         <property name="default">
-          <bool>false</bool>
          </property>
         </widget>
        </widget>
@@ -1864,7 +1831,7 @@ background-repeat:no-repeat;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>809</width>
+     <width>829</width>
      <height>22</height>
     </rect>
    </property>

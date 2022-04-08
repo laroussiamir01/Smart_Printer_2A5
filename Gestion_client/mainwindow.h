@@ -42,13 +42,18 @@ private slots:
 
      void on_ProduitNom_rechecher_textChanged(const QString &arg1);
 
-     void on_tabWidget_2_currentChanged(int index);
 
 
+
+
+     void on_enregister_fidele_clicked();
+
+     void on_pushButton_3_clicked();
 
 private:
     Ui::MainWindow *ui;
     client tmpclient;
+    client tmpfidele;
     reclamation tmpreclamation;
 };
 #endif // MAINWINDOW_H

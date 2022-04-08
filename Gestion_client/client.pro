@@ -1,5 +1,8 @@
 QT       += core gui sql charts network printsupport
 QT += sql
+QT += charts
+QT += printsupport
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -26,10 +29,12 @@ HEADERS += \
     client.h \
     connection.h \
     mainwindow.h \
-    reclamation.h
+    reclamation.h \
+    stat_combo.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui\
+stat_combo.ui
 
 CONFIG += console
 # Default rules for deployment.

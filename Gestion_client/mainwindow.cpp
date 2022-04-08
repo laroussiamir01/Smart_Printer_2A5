@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include"client.h"
 #include"reclamation.h"
+#include"stat_combo.h"
+#include"ui_stat_combo.h"
 #include <QMessageBox>
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -19,6 +21,9 @@
 #include <QtCharts/QCategoryAxis>
 #include <QPainter>
 #include <QtCharts>
+#include <QTextDocument>
+#include <QPrintDialog>
+#include <QPrinter>
 
 
 
@@ -115,10 +120,18 @@ void MainWindow::on_ajouter_r_clicked()
 
 void MainWindow::on_supprimer_clicked()
 {
+    QSqlQuery query2;
     int cin=ui->comboBox->currentText().toInt();
+    query2.prepare("select cin from client where cin=:cin");
+            query2.bindValue(":cin",cin);
+    query2.exec();
+    query2.next();
+    int cin1=query2.value(0).toInt();
 
-    if( cin >0 )
+
+    if(cin1==cin && cin !=0 )
     {
+         QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Cin existe\n" "Click cancel to exit."),QMessageBox::Cancel);
          bool test=tmpclient.supprimerClient(cin);
     if(test)
      {
@@ -130,10 +143,11 @@ void MainWindow::on_supprimer_clicked()
         QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Suppression non effectue.\n" "Click Cancel to exit."), QMessageBox::Cancel);
 
 
-    }else {
+    }
+    else {
 
         QMessageBox::critical(nullptr,QObject::tr("supprimer client"),
-                            QObject::tr("Controle de saisie:.\n"
+                            QObject::tr("id n'existe pas:.\n"
                                         "Click Cancel to exit."),QMessageBox::Cancel);
 
 
@@ -309,48 +323,68 @@ void MainWindow::on_ProduitNom_rechecher_textChanged(const QString &arg1)
 }
 
 
-void MainWindow::on_tabWidget_2_currentChanged(int index)
+
+void MainWindow::on_enregister_fidele_clicked()
 {
-    ui->tableView->setModel(tmpclient.afficherClient());
-    ui->tableView_affirechercher->setModel(tmpclient.afficherClient());
-    ui->tableView_tri->setModel(tmpclient.afficherClient());
-    //tmpservice.PromotionPrix();
+     QSqlQuery query2,query1;
+    int fidele=ui->comboBox_fidele->currentText().toInt();
+    qDebug() << fidele;
+    int cin= ui->cin_fidele->text().toInt();
+    query1.prepare("select cin from client where cin=:cin");
+          query1.bindValue(":cin",cin);
+     query1.exec();
+     query1.next();
+     int cin1=query1.value(0).toInt();
+     if(cin1==cin && cin !=0)
+     {
+         QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Cin existe\n" "Click cancel to exit."),QMessageBox::Cancel);
+        int fidelee;
+        query2.prepare("select fidele from client where cin=:cin");
+              query2.bindValue(":cin",cin);
+         query2.exec();
+
+         if (query2.next()){
+          fidelee=query2.value(0).toInt();
+         }
 
 
-            QPieSeries *series = new QPieSeries();
-            series->setHoleSize(0.20);
+        fidelee += fidele;
+        qDebug()<< fidelee ;
+         // fidele << fidelee ;
 
-                QSqlQuery q;
-                q.prepare("select fidele,cin from CLIENT  order by fidele  DESC");
-                if(q.exec())
-              { //  int c=0;
-                 //  qDebug()<<"azazazazazaz";
-                  while (q.next())
-                  {
-                      //qDebug()<<"azazazazazaz";
-                  QString a=q.value(0).toString() ;
-                  float b= q.value(1).toFloat()  ;
-                 // if(c==0)
-                 // {
-                     // QPieSlice *slice =  series->append(a, b );
-                     // slice->setExploded();
-                     // slice->setLabelVisible();
-                  //}
-                 // else
-                 // {
-                      series->append(a+" DT", b );
-                  //}
-              }}
 
-            QChart *chart = new QChart();
-            chart->addSeries(series);
-            chart->setAnimationOptions(QChart::SeriesAnimations);
-            chart->setTitle("donut chart repartition des client par fidele :");
-            chart->setTheme(QChart::ChartThemeLight );
-            QChartView *chartview = new QChartView(chart);
-            chartview->setRenderHint(QPainter::Antialiasing);
-            chart->legend()->setAlignment(Qt::AlignRight);
-            chartview->setParent(ui->aaaaa);
+        bool test=tmpclient.modifierFidele(cin,fidelee);
+
+        if(test)
+        {
+            //refresh
+            ui->tableView->setModel(tmpclient.afficherClient());
+             QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Modification effectué\n" "Click cancel to exit."),QMessageBox::Cancel);
+        }
+        else
+            QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Modification non effectue.\n" "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+    else
+
+        QMessageBox::critical(nullptr,QObject::tr("supprimer client"),
+                            QObject::tr("id n'existe pas:.\n"
+                                        "Click Cancel to exit."),QMessageBox::Cancel);
+
+
+
+     }
+
+
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    stat_combo *s= new stat_combo();
+
+             s->setWindowTitle("statistique ComboBox");
+             s->choix_pie();
+             s->show();
 
 
 }
