@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 #include "client.h"
 #include "reclamation.h"
-#include "arduino.h"
+#include "arduino_A.h"
 #include "recherche_client.h"
 #include <QMainWindow>
 #include <QtSql>

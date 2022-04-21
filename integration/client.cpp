@@ -98,21 +98,6 @@ model->setHeaderData(4,Qt::Horizontal,QObject::tr("OFFRE"));
 return model;
 }
 
-bool client::chercher(int IDD)
-{
-    QSqlQuery query;
-     QString IDD_string= QString::number(IDD);
-    query.exec("SELECT * FROM client WHERE cin='"+IDD_string+"'");
-
-
-    while (query.next()) {
-        return  true;
-
-    }
-    return false;
-
-}
-
 QSqlQueryModel * client::triParNom()
 {
 QSqlQueryModel * model= new QSqlQueryModel();
@@ -314,3 +299,5 @@ chartView->show();
 
     chartView->show();
     }
+
+

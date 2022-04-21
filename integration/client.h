@@ -43,7 +43,6 @@ public:
     bool modifierFidele(int,int);
 
     QSqlQueryModel *recherche(const QString &);
-    bool chercher(int IDD);
     QSqlQueryModel * triParNom();
     QSqlQueryModel * triParQte();
 

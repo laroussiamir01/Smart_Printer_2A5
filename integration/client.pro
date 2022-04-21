@@ -19,23 +19,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    arduino.cpp \
+    arduino_A.cpp \
     client.cpp \
     connection.cpp \
+    interface.cpp \
     main.cpp \
-    mainwindow.cpp \
+    mainwindow_A.cpp \
     reclamation.cpp
 
 HEADERS += \
-    arduino.h \
+    arduino_A.h \
     client.h \
     connection.h \
-    mainwindow.h \
+    interface.h \
+    mainwindow_A.h \
     reclamation.h \
     stat_combo.h
 
 FORMS += \
-    mainwindow.ui\
+    interface.ui \
+    mainwindow_A.ui \
 stat_combo.ui
 
 CONFIG += console

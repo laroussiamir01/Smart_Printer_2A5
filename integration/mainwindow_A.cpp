@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "mainwindow_A.h"
 #include "ui_mainwindow.h"
 #include"client.h"
 #include"reclamation.h"
@@ -24,7 +24,7 @@
 #include <QTextDocument>
 #include <QPrintDialog>
 #include <QPrinter>
-#include "arduino.h"
+
 
 
 using namespace std;
@@ -35,27 +35,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->tableView->setModel(tmpclient.afficherClient());
-
-
-        int ret=A.connect_arduino(); // lancer la connexion à arduino
-                switch(ret){
-                case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
-                    break;
-                case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
-                   break;
-                case(-1):qDebug() << "arduino is not available";
-                }
-                 QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
-                 //le slot update_label suite à la reception du signal readyRead (reception des données).
-                 //A.write_to_arduino("0");
-                 A.read_from_arduino();
-                 QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label2())); // permet de lancer
-                 //le slot update_label suite à la reception du signal readyRead (reception des données).
-                 //A.write_to_arduino("0");
-                 A.read_from_arduino();
-
-
-
  //   QRegExp rxnom("\\b[a-zA-Z]{4,10}\\b");
    //         QRegExpValidator *valinom =new QRegExpValidator(rxnom,this);
      //       ui->LineEdit_Nom->setValidator(valinom);
@@ -79,46 +58,30 @@ void MainWindow::on_ajouter_clicked()
     QString prenom=ui->LineEdit_Prenom->text();
     client C(cin,nom,prenom); //instancier un objet de la classe client en utilisant les info saisie
 
-    QSqlQuery query2;
-
-    query2.prepare("select cin from client where cin=:cin");
-            query2.bindValue(":cin",cin);
-    query2.exec();
-    query2.next();
-    int cin1=query2.value(0).toInt();
-
-
-    if(cin1==cin && cin !=0 )
-    {
-         QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Cin existe\n" "Click cancel to exit."),QMessageBox::Cancel);
-     A.write_to_arduino("0");
-}
-    else if( cin >0 && nom!= NULL && prenom != NULL )
+    if( cin >0 && nom!= NULL && prenom != NULL )
     {
 
     bool test=C.ajouterClient(); //inserer l'objet client instancie dans la table client et recuperer la valeur de retour de query.exec()
 
+    if(test) //si requete excutee -->QMessageBox::infprmation
+    {
+        //refresh
+        ui->tableView->setModel(tmpclient.afficherClient());
+        QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Ajout effectué\n" "Click cancel to exit."),QMessageBox::Cancel);
+    }
+    else //si requete non execute --> QMessageBox::critical
+        QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Ajout non effectue.\n" "Click Cancel to exit."), QMessageBox::Cancel);
 
-            if(test)
-            {
+    }else {
 
-
-            QMessageBox::information(nullptr, QObject::tr("ajouter un client"),
-                              QObject::tr("client ajouté.\n"
-                                          "Click Cancel to exit."), QMessageBox::Cancel);
-A.write_to_arduino("1");
-
-
-            }
-              else{
-                  QMessageBox::critical(nullptr, QObject::tr("ajouter un client"),
-                              QObject::tr("Erreur ! ID existant\n"
-                                          "Click Cancel to exit."), QMessageBox::Cancel);
+        QMessageBox::critical(nullptr,QObject::tr("ajouter client"),
+                            QObject::tr("Controle de saisie:.\n"
+                                        "Click Cancel to exit."),QMessageBox::Cancel);
 
 
-            }
+  }
    }
-}
+
 
 
 
@@ -348,29 +311,6 @@ void MainWindow::on_rechercher_clicked()
  if(id!="")  { ui->tableView_affirechercher->setModel(tmpclient.recherche(id)); }
  else{ QMessageBox::information(this,"Pour chercher dans vehicule  il Faut","tapez le Nom");
      ui->tableView_affirechercher->setModel(tmpclient.afficherClient());
-
-
-     client d ;
-
-         int cin;
-         data=A.read_from_arduino();
-
-
-         cin=data.toInt();
-
-                     bool test=d.chercher(cin);
-
-                     if(test)
-                     {
-                         QMessageBox::information(nullptr, QObject::tr("Recherche"),
-                                                 QObject::tr("client existe\n"
-                                                             "Cliquez sur cancel Pour Quitter."), QMessageBox::Cancel);
-                     ui->statusbar->showMessage("recherche terminée");
-                    }
-                     else
-                     {  QMessageBox::warning(nullptr, QObject::tr("erreur"),
-                                             QObject::tr("Echec.\n"
-                                                         "Click Cancel to exit."), QMessageBox::Cancel);}
 
  }
 }
