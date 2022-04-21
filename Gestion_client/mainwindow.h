@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include "client.h"
 #include "reclamation.h"
+#include "arduino.h"
 #include "recherche_client.h"
 #include <QMainWindow>
 #include <QtSql>
@@ -50,11 +51,18 @@ private slots:
 
      void on_pushButton_3_clicked();
 
+     void on_pushButton_4_clicked();
+
+     void on_pushButton_5_clicked();
+     void update_label();
+
 private:
     Ui::MainWindow *ui;
     client tmpclient;
     client tmpfidele;
     reclamation tmpreclamation;
+    Arduino A;
+    QByteArray data; //variable contenant les donnes
 };
 #endif // MAINWINDOW_H
 
