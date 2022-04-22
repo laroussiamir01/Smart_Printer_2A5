@@ -1,5 +1,6 @@
 #ifndef CLIENT_H
 #define CLIENT_H
+
 #include<QSqlQuery>
 #include<QSqlQueryModel>
 #include <QString>
@@ -43,6 +44,7 @@ public:
     bool modifierFidele(int,int);
 
     QSqlQueryModel *recherche(const QString &);
+    bool chercher(int IDD);
     QSqlQueryModel * triParNom();
     QSqlQueryModel * triParQte();
 
@@ -54,5 +56,7 @@ public:
 
 };
 
-#endif // CLIENT_H
 
+
+
+#endif // CLIENT_H

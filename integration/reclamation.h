@@ -1,5 +1,7 @@
 #ifndef RECLAMATION_H
 #define RECLAMATION_H
+
+
 #include<QSqlQuery>
 #include<QSqlQueryModel>
 #include <QString>
@@ -30,4 +32,3 @@ public:
 };
 
 #endif // RECLAMATION_H
-

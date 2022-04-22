@@ -39,5 +39,4 @@ public:
 private:
     Ui::stat_combo *ui;
 };
-
 #endif // STAT_COMBO_H
