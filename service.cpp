@@ -103,7 +103,7 @@ bool service::modifierService(int id, QString nom, int prix , int qte)
 
 }
 
-QSqlQueryModel * service::recherche(const QString &nom)
+QSqlQueryModel * service::recherche_service(const QString &nom)
 {
 QSqlQueryModel * model= new QSqlQueryModel();
 model->setQuery("select id,nom,prix,qte,offre,classement from service where (nom LIKE '"+nom+"%') ");
@@ -118,7 +118,7 @@ return model;
 }
 
 
-QSqlQueryModel * service::triParNom()
+QSqlQueryModel * service::triParNom_service()
 {
 QSqlQueryModel * model= new QSqlQueryModel();
 model->setQuery("select id,nom,prix,qte,offre,classement from service order by nom asc");
@@ -132,7 +132,7 @@ model->setHeaderData(5,Qt::Horizontal,QObject::tr("CLASSEMENT"));
 return model;
 }
 
-QSqlQueryModel * service::triParQte()
+QSqlQueryModel * service::triParQte_service()
 {
 QSqlQueryModel * model= new QSqlQueryModel();
 model->setQuery("select id,nom,prix,qte,offre,classement from service order by qte desc");

@@ -47,7 +47,7 @@ MainWindow::~MainWindow()
 
 
 
-void MainWindow::on_ajouter_clicked()
+void MainWindow::on_ajouter_service_clicked()
 {
 
     QString nom=ui->LineEdit_Nom->text();
@@ -91,7 +91,7 @@ void MainWindow::on_ajouter_clicked()
 
 
 
-void MainWindow::on_supprimer_clicked()
+void MainWindow::on_supprimer_service_clicked()
 {
      QSqlQuery query;
 
@@ -140,7 +140,7 @@ else {
 
 
 
-void MainWindow::on_afficher_clicked()
+void MainWindow::on_afficher_service_clicked()
 {
     ui->tableView->setModel(tmpservice.afficherService());
     ui->tableView_affirechercher->setModel(tmpservice.afficherService());
@@ -150,7 +150,7 @@ void MainWindow::on_afficher_clicked()
 
 
 
-void MainWindow::on_modifier_clicked()
+void MainWindow::on_modifier_service_clicked()
 {
     QSqlQuery query;
  int id =ui->lineEdit_id_modif->text().toInt();
@@ -209,25 +209,25 @@ else {
 }
 }
 
-void MainWindow::on_radioButton_TRInProd_clicked() //tri nom
+void MainWindow::on_radioButton_TRInProd_service_clicked() //tri nom
 {
-    ui->tableView_tri->setModel(tmpservice.triParNom());
+    ui->tableView_tri->setModel(tmpservice.triParNom_service());
 }
 
 
-void MainWindow::on_radioButton_TRInProdPrix_clicked() //tri prix
+void MainWindow::on_radioButton_TRInProdPrix_service_clicked() //tri prix
 {
-    ui->tableView_tri->setModel(tmpservice.triParQte());
+    ui->tableView_tri->setModel(tmpservice.triParQte_service());
 
 }
 
 
-void MainWindow::on_rechercher_clicked()
+void MainWindow::on_rechercher_service_clicked()
 {
     qDebug()<< "chercher !!" ;
     QString id=ui->ProduitNom_rechecher->text();
 
- if(id!="")  { ui->tableView_affirechercher->setModel(tmpservice.recherche(id)); }
+ if(id!="")  { ui->tableView_affirechercher->setModel(tmpservice.recherche_service(id)); }
  else{ QMessageBox::information(this,"Pour chercher dans vehicule  il Faut","tapez le Nom");
      ui->tableView_affirechercher->setModel(tmpservice.afficherService());
 
@@ -235,14 +235,14 @@ void MainWindow::on_rechercher_clicked()
 }
 
 
-void MainWindow::on_ProduitNom_rechecher_textChanged(const QString &arg1)
+void MainWindow::on_ProduitNom_rechecher_service_textChanged(const QString &arg1)
 {
     if(arg1==""){    ui->tableView_affirechercher->setModel(tmpservice.afficherService());    }
 
 }
 
 
-void MainWindow::on_tabWidget_2_currentChanged(int index)
+void MainWindow::on_tabWidget_service_currentChanged(int index)
 {
     ui->tableView->setModel(tmpservice.afficherService());
     ui->tableView_affirechercher->setModel(tmpservice.afficherService());

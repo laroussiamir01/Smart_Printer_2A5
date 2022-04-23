@@ -47,9 +47,9 @@ public:
 
 
 //
-    QSqlQueryModel *recherche(const QString &);
-    QSqlQueryModel * triParNom();
-    QSqlQueryModel * triParQte();
+    QSqlQueryModel *recherche_service(const QString &);
+    QSqlQueryModel * triParNom_service();
+    QSqlQueryModel * triParQte_service();
     bool PromotionPrix();
 
 

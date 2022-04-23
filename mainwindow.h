@@ -17,30 +17,32 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private slots:
-    void on_ajouter_clicked();
+    //---------------service-----------------------------------
+    void on_ajouter_service_clicked();
 
 
 
-    void on_afficher_clicked();
+    void on_afficher_service_clicked();
 
 
-    void on_supprimer_clicked();
+    void on_supprimer_service_clicked();
 
 
-    void on_modifier_clicked();
+    void on_modifier_service_clicked();
 
 
 
 
-    void on_radioButton_TRInProd_clicked();
+    void on_radioButton_TRInProd_service_clicked();
 
-    void on_radioButton_TRInProdPrix_clicked();
+    void on_radioButton_TRInProdPrix_service_clicked();
 
-    void on_rechercher_clicked();
+    void on_rechercher_service_clicked();
 
-    void on_ProduitNom_rechecher_textChanged(const QString &arg1);
+    void on_ProduitNom_rechecher_service_textChanged(const QString &arg1);
 
-    void on_tabWidget_2_currentChanged(int index);
+    void on_tabWidget_service_currentChanged(int index);
+    //----------------------------------------------------------------
 
 private:
     Ui::MainWindow *ui;
