@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include "connection.h"
 #include"client.h"
+#include"personnel.h"
 
 int main(int argc, char *argv[])
 {
@@ -25,4 +26,5 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
+
 

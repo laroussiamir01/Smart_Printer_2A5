@@ -4,6 +4,9 @@ QT += sql
 QT += charts
 QT += printsupport
 QT += serialport
+
+CONFIG += console
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -25,6 +28,7 @@ SOURCES += \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
+    personnel.cpp \
     reclamation.cpp
 
 HEADERS += \
@@ -32,12 +36,15 @@ HEADERS += \
     client.h \
     connection.h \
     mainwindow.h \
+    personnel.h \
     reclamation.h \
-    stat_combo.h
+    stat_combo.h \
+    stat_combo_perso.h
 
 FORMS += \
     mainwindow.ui \
-    stat_combo.ui
+    stat_combo.ui \
+    stat_combo_perso.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
