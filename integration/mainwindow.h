@@ -9,6 +9,7 @@
 #include <QSqlDatabase>
 
 #include "personnel.h"
+#include "service.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -84,8 +85,35 @@ void on_pushButtonperso_clicked();
 void on_pushButton_2perso_clicked();
     //---------------------------------------------------------------------------
 
+//---------------service-----------------------------------
+void on_ajouter_service_clicked();
 
 
+
+void on_afficher_service_clicked();
+
+
+void on_supprimer_service_clicked();
+
+
+void on_modifier_service_clicked();
+
+
+
+
+void on_radioButton_TRInProd_service_clicked();
+
+void on_radioButton_TRInProdPrix_service_clicked();
+
+void on_rechercher_service_clicked();
+
+void on_ProduitNom_rechecher_ser_textChanged(const QString &arg1);
+
+void on_tabWidget_service_currentChanged(int index);
+//----------------------------------------------------------------
+
+
+void on_pushButton_service_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -93,6 +121,7 @@ private:
     Personnel tmpPersonnel;
     client tmpfidele;
     reclamation tmpreclamation;
+     service tmpservice;
     Arduino A;
     QByteArray data; //variable contenant les donnes
 

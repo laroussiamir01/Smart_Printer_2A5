@@ -29,7 +29,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     personnel.cpp \
-    reclamation.cpp
+    reclamation.cpp \
+    service.cpp
 
 HEADERS += \
     arduino.h \
@@ -38,6 +39,7 @@ HEADERS += \
     mainwindow.h \
     personnel.h \
     reclamation.h \
+    service.h \
     stat_combo.h \
     stat_combo_perso.h
 
