@@ -23,12 +23,12 @@ public:
    QSqlQueryModel *trierAc();
    QSqlQueryModel * trierDec();
    bool Prime(int,int);
-
-   ~Personnel(){}
+ bool congee(int,int);
+ ~Personnel(){}
 
     Personnel();
 private:
-    QString  prenom,nom,date_depart,date_fin;
+    QString  prenom,nom;
     int cin,conge;
     int prime;
 

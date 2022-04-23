@@ -19,24 +19,26 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_ajouter_clicked();
+    void on_ajouterperso_clicked();
 
-    void on_afficher_clicked();
+    void on_afficherperso_clicked();
 
-    void on_supprimer_clicked();
+    void on_supprimerperso_clicked();
 
-    void on_modifier_clicked();
+    void on_modifierperso_clicked();
 
-void on_rechercher_clicked();
+void on_rechercherperso_clicked();
 
-void on_pushButton_TriASC_clicked();
+void on_pushButton_TriASCperso_clicked();
 
-void on_pushButton_TriDESC_clicked();
-void on_ajouter_prime_clicked();
+void on_pushButton_TriDESCperso_clicked();
+void on_ajouter_primeperso_clicked();
 
-void on_pushButton_clicked();
+void on_pushButtonperso_clicked();
 
 
+
+void on_pushButton_2perso_clicked();
 
 private:
     Ui::MainWindow *ui;

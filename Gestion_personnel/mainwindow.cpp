@@ -24,7 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->tableView->setModel(tmpPersonnel.afficherPersonnel());
+    ui->tableViewperso->setModel(tmpPersonnel.afficherPersonnel());
+
 
 }
 
@@ -35,15 +36,15 @@ MainWindow::~MainWindow()
 
 
 
-void MainWindow::on_ajouter_clicked()
+void MainWindow::on_ajouterperso_clicked()
 {
     int cin;
         QString nom,prenom;
-        cin=ui->lineEditCin->text().toInt();
+        cin=ui->lineEditCinperso->text().toInt();
 
-        nom=ui->lineEdit_nom->text();
-        prenom=ui->lineEdit_pren->text();
-        ui->tableView->setModel(tmpPersonnel.afficherPersonnel());
+        nom=ui->lineEdit_nomperso->text();
+        prenom=ui->lineEdit_prenperso->text();
+        ui->tableViewperso->setModel(tmpPersonnel.afficherPersonnel());
 
         Personnel P(cin,nom,prenom);
 
@@ -51,7 +52,7 @@ void MainWindow::on_ajouter_clicked()
          bool test=P.addPersonnel();
          if(test)
          {
-             ui->tableView->setModel(tmpPersonnel.afficherPersonnel());
+             ui->tableViewperso->setModel(tmpPersonnel.afficherPersonnel());
              QMessageBox::critical(nullptr, QObject::tr("ADD"),
                          QObject::tr(" successful.\n"
                                      "Click Cancel to exit."), QMessageBox::Cancel);
@@ -66,16 +67,16 @@ void MainWindow::on_ajouter_clicked()
 }
 
 
-void MainWindow::on_afficher_clicked()
+void MainWindow::on_afficherperso_clicked()
 {
-    ui->tableView->setModel(tmpPersonnel.afficherPersonnel());
+    ui->tableViewperso->setModel(tmpPersonnel.afficherPersonnel());
 
 }
 
-void MainWindow::on_supprimer_clicked()
+void MainWindow::on_supprimerperso_clicked()
 {
     QSqlQuery query2;
-    int cin=ui->lineEditCin_supp->text().toInt();
+    int cin=ui->lineEditCin_suppperso->text().toInt();
 
 
 
@@ -117,15 +118,15 @@ void MainWindow::on_supprimer_clicked()
 
 
 
-void MainWindow::on_modifier_clicked()
+void MainWindow::on_modifierperso_clicked()
 {
     QSqlQuery query2;
     int cin;
         QString nom,prenom;
 
-        cin=ui->lineEditCin_modif->text().toInt();
-        nom=ui->lineEdit_nom_modif->text();
-        prenom=ui->lineEdit_pren_modif->text();
+        cin=ui->lineEditCin_modifperso->text().toInt();
+        nom=ui->lineEdit_nom_modifperso->text();
+        prenom=ui->lineEdit_pren_modifperso->text();
 
        tmpPersonnel.modifierPersonnel(nom,prenom,cin);
        Personnel P(cin,nom,prenom);
@@ -169,29 +170,29 @@ void MainWindow::on_modifier_clicked()
           }
 
 }
-void MainWindow::on_rechercher_clicked()
+void MainWindow::on_rechercherperso_clicked()
 {
-      int  cin=ui->lineEdit_rechercher->text().toInt(); ;
-        ui->tableView_rechercher->setModel(tmpPersonnel.rechercher_perso(cin)) ;
+      int  cin=ui->lineEdit_rechercherperso->text().toInt(); ;
+        ui->tableView_rechercherperso->setModel(tmpPersonnel.rechercher_perso(cin)) ;
 
 }
-void MainWindow::on_pushButton_TriASC_clicked()
+void MainWindow::on_pushButton_TriASCperso_clicked()
 {
-    ui->tableView_tri->setModel(tmpPersonnel.trierAc());
+    ui->tableView_triperso->setModel(tmpPersonnel.trierAc());
 }
 
-void MainWindow::on_pushButton_TriDESC_clicked()
+void MainWindow::on_pushButton_TriDESCperso_clicked()
 {
-    ui->tableView_tri->setModel(tmpPersonnel.trierDec());
+    ui->tableView_triperso->setModel(tmpPersonnel.trierDec());
 }
-void MainWindow::on_ajouter_prime_clicked()
+void MainWindow::on_ajouter_primeperso_clicked()
 {
 
     QSqlQuery query2;
     int cin,prime;
 
-        cin=ui->lineEdit->text().toInt();
-        prime=ui->lineEdit_2->text().toUInt();
+        cin=ui->lineEditperso->text().toInt();
+        prime=ui->lineEdit_2perso->text().toUInt();
 
 
        tmpPersonnel.Prime(prime,cin);
@@ -204,7 +205,7 @@ void MainWindow::on_ajouter_prime_clicked()
 
 
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButtonperso_clicked()
 {
     stat_combo *s= new stat_combo();
 
@@ -215,3 +216,36 @@ void MainWindow::on_pushButton_clicked()
 }
 
 
+
+void MainWindow::on_pushButton_2perso_clicked()
+{
+
+    int conge= ui->comboBoxperso->currentText().toInt();
+    int cin=ui->lineEdit_3perso->text().toInt();
+
+        QSqlQuery query;
+
+
+
+        query.prepare("update personnel set conge=:conge  where cin=:cin");
+        query.bindValue(":cin",cin);
+        query.bindValue(":conge",conge);
+
+         query.exec();
+
+         if(conge==1)
+         QMessageBox::information(nullptr, QObject::tr("ok"),
+                                QObject::tr("encour de traitement\n"
+                                            "click cancel to exit."),QMessageBox::Cancel);
+         else if(conge==2)
+             QMessageBox::information(nullptr, QObject::tr("ok"),
+                                    QObject::tr("conge a ete accepter avec succe\n"
+                                                "click cancel to exit."),QMessageBox::Cancel);
+         else
+             QMessageBox::information(nullptr, QObject::tr("ok"),
+                                    QObject::tr("demande a ete refuser\n"
+                                                "click cancel to exit."),QMessageBox::Cancel);
+
+
+
+}

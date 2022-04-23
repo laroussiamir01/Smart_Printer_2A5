@@ -296,7 +296,10 @@ void Personnel::setprenom(QString n){
       chartView->show();
       }
 
+      bool Personnel::congee(int cin,int conge)
+  {
 
+      }
 
 
 
