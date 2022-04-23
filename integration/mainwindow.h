@@ -3,6 +3,8 @@
 
 #include "client.h"
 #include "reclamation.h"
+#include "achat.h"
+#include "materiel.h"
 #include "arduino.h"
 #include <QMainWindow>
 #include <QtSql>
@@ -28,6 +30,9 @@ private slots:
     void on_pushButton_client_clicked();
 
     void on_pushButton_personel_clicked();
+
+    void on_pushButton_service_clicked();
+    void on_pushButton_materiel_clicked();
 
 //----------client----------------------------------------------------
     void on_ajouter_client_clicked();
@@ -113,7 +118,45 @@ void on_tabWidget_service_currentChanged(int index);
 //----------------------------------------------------------------
 
 
-void on_pushButton_service_clicked();
+//----------------------materiel----------------------------------------
+void on_pb_supprimer_clicked();
+
+void on_pb_ajout_clicked();
+
+void on_pb_modifier_clicked();
+
+
+void on_pb_trier_clicked();
+
+void on_pb_tri_nom_clicked();
+
+void on_pb_tri_cat_clicked();
+
+void on_pb_tri_prix_clicked();
+
+void on_pb_tri_prix_desc_clicked();
+
+void on_pb_recherche_clicked();
+
+void on_pb_recherche_2_clicked();
+
+
+void on_pb_stat_clicked();
+
+
+
+void on_pb_panne_clicked();
+
+void on_pb_traitement_clicked();
+
+void on_pb_regler_clicked();
+
+void on_pb_achat_clicked();
+
+
+
+
+
 
 private:
     Ui::MainWindow *ui;
@@ -124,6 +167,8 @@ private:
      service tmpservice;
     Arduino A;
     QByteArray data; //variable contenant les donnes
+    MATERIEL M;
+    ACHAT a;
 
 
 };

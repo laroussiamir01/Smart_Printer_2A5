@@ -23,29 +23,35 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    achat.cpp \
     arduino.cpp \
     client.cpp \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
+    materiel.cpp \
     personnel.cpp \
     reclamation.cpp \
     service.cpp
 
 HEADERS += \
+    achat.h \
     arduino.h \
     client.h \
     connection.h \
     mainwindow.h \
+    materiel.h \
     personnel.h \
     reclamation.h \
     service.h \
     stat_combo.h \
+    stat_combo_mat.h \
     stat_combo_perso.h
 
 FORMS += \
     mainwindow.ui \
     stat_combo.ui \
+    stat_combo_mat.ui \
     stat_combo_perso.ui
 
 # Default rules for deployment.

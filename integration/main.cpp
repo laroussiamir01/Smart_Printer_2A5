@@ -2,8 +2,10 @@
 #include <QApplication>
 #include <QMessageBox>
 #include "connection.h"
-#include"client.h"
-#include"personnel.h"
+#include "client.h"
+#include "personnel.h"
+#include "materiel.h"
+#include "achat.h"
 
 int main(int argc, char *argv[])
 {
