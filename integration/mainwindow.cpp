@@ -1,11 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
 #include"stat_combo.h"
 #include"ui_stat_combo.h"
 #include"stat_combo_perso.h"
 #include"ui_stat_combo_perso.h"
-
 #include <QMessageBox>
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -26,7 +24,9 @@
 #include <QTextDocument>
 #include <QPrintDialog>
 #include <QPrinter>
-
+#include <QTextStream>
+#include "stat_combo_com.h"
+#include <ui_stat_combo_com.h>
 #include "arduino.h"
 #include"client.h"
 #include"reclamation.h"
@@ -34,22 +34,19 @@
 #include "service.h"
 #include "materiel.h"
 #include"achat.h"
-
-
+#include "commande.h"
 #include<QObject>
 #include <qstring.h>
 #include<QTableView>
 #include<QSqlQueryModel>
 #include<QIntValidator>
-#include <QApplication>   // Manages the applications main settings like
-                             // widget initialization
+#include <QApplication>   // Manages the applications main settings like                         // widget initialization
 #include <QSqlTableModel>
 #include <QString>
 #include <QSqlRecord>
 #include "stat_combo_mat.h"
 #include "ui_stat_combo_mat.h"
 #include <QDate>
-
 #include <QSqlRecord>
 #include <iostream>
 
@@ -61,7 +58,8 @@
 #include <QtCharts/QPieSlice>
 
 
-
+#include <QSerialPort>
+#include <QSerialPortInfo>
 
 
 
@@ -72,6 +70,23 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
+
+
+
+ //   QSqlQueryModel* model=new QSqlQueryModel();
+ //   model->setQuery("select NOM from PRODUIT");
+ //   ui->comboBox_com->setModel(model);
+ //   ui->comboBox_2_com->setModel(model);
+
+ //   QSqlQueryModel* model2=new QSqlQueryModel();
+ //   model2->setQuery("select ID_COMMAND from COMMANDE");
+ //   ui->comboBox_id_com->setModel(model2);
+  //  ui->comboBox_id2_com->setModel(model2);
+  //  ui->comboBox_id3_com->setModel(model2);
+  //  ui->comboBox_id4_com->setModel(model2);
+
     //----------------client--------------------------------------------------------
     ui->tableView_client->setModel(tmpclient.afficherClient());
       ui->tableViewperso->setModel(tmpPersonnel.afficherPersonnel());
@@ -82,6 +97,8 @@ MainWindow::MainWindow(QWidget *parent)
 
   ui->tablemateriel->setModel(M.afficher());
   ui->tabachat->setModel(a.affichermat());
+
+
 
  // ui->le_id_supp->setValidator(new QIntValidator (0,9999,this));
 //  ui->le_id->setValidator(new QIntValidator (0,9999,this));
@@ -99,6 +116,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
+
         int ret=A.connect_arduino(); // lancer la connexion à arduino
                 switch(ret){
                 case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
@@ -111,11 +129,11 @@ MainWindow::MainWindow(QWidget *parent)
                  //le slot update_label suite à la reception du signal readyRead (reception des données).
                  //A.write_to_arduino("0");
                  A.read_from_arduino();
-                 QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label2())); // permet de lancer
+                 QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
                  //le slot update_label suite à la reception du signal readyRead (reception des données).
                  //A.write_to_arduino("0");
                  A.read_from_arduino();
-
+ // QObject::connect(arduino,SIGNAL(readyRead()),this,SLOT(readSerial()));
 //---------------------------------------------------------------------------------------------
 }
 
@@ -148,14 +166,29 @@ void MainWindow::on_pushButton_materiel_clicked()
      ui->stackedWidget->setCurrentIndex(4);
 }
 
+void MainWindow::on_pushButton_commande_clicked()
+{
+      ui->stackedWidget->setCurrentIndex(5);
+}
+
+
 
 //-----------------------------------------------------------------------
 
 //---------------------------------client------------------------------------------
 void MainWindow::on_ajouter_client_clicked()
 {
- //   cout >> A.read_from_arduino();
-  //   qDebug() << "input :" << .read_from_arduino() ;
+
+  //    A.getserial()->waitForBytesWritten(5000);
+
+   //   A.getserial()->waitForReadyRead(1000);
+    data = A.read_from_arduino();
+ //  cout<<data.toStdString()<< "aaaa "<<endl;
+  //  qDebug() data.toStdString() ;
+    qDebug() << "clavier :" <<data;
+
+
+
     //recuperation des information saisies dans les 3 champs
     int cin= ui->LineEdit_Id_client->text().toInt();
 
@@ -430,14 +463,25 @@ void MainWindow::on_rechercher_client_clicked()
     QString id=ui->ProduitNom_rechecher_client->text();
 
  if(id!="")  { ui->tableView_affirechercher_client->setModel(tmpclient.recherche(id)); }
- else{ QMessageBox::information(this,"Pour chercher dans vehicule  il Faut","tapez le Nom");
+ else{ QMessageBox::information(this,"Pour chercher dans client  il Faut","tapez le Nom");
      ui->tableView_affirechercher_client->setModel(tmpclient.afficherClient());
+   //  data = A.read_from_arduino();
+
+   //  qDebug() data.toStdString() ;
+     QByteArray s = A.getserial()->readAll();
+            A.getserial()->waitForReadyRead(1000);
+              cout<<data.toStdString()<< "aaaa "<<endl;
+
+
+
 
 
      client d ;
 
          int cin;
+           A.getserial()->waitForReadyRead(1000);
          data=A.read_from_arduino();
+
 
 
          cin=data.toInt();
@@ -457,6 +501,7 @@ void MainWindow::on_rechercher_client_clicked()
                                                          "Click Cancel to exit."), QMessageBox::Cancel);}
 
  }
+    qDebug() << "clavier : " << data <<endl;
 }
 
 
@@ -547,9 +592,9 @@ void MainWindow::update_label()
 {
     data=A.read_from_arduino();
     if(data=="1")
-        ui->label_arduino->setText("Nombre Attein"); //si les donnes recue de arduino via la liaison series sont egual a 1
+        ui->label_arduino->setText("succes"); //si les donnes recue de arduino via la liaison series sont egual a 1
     else if (data=="0")
-        ui->label_arduino->setText("NOMBRE non Attein");
+        ui->label_arduino->setText("echec");
 
 }
 
@@ -1220,7 +1265,7 @@ void MainWindow::on_pb_achat_clicked()
                                       qApp->tr("voulez vous ajouter cette depense?"),QMessageBox::Yes,QMessageBox::No);
                 if(QMessageBox::Yes)
                 {
-                    bool test= a.ajouter();
+                    bool test= a.ajoutermat();
                     if (test)
                     {
                         ui->tabachat->setModel(a.affichermat());
@@ -1236,3 +1281,418 @@ void MainWindow::on_pb_achat_clicked()
 
 
 //----------------------------------------------------------------------------------
+//-----------------------------commande-----------------------------------------------
+void MainWindow::on_pushButton_clicked()
+{
+    QString prod= ui->comboBox_com->currentText();
+     QSqlQuery query,query2,query3,query4;
+     query.prepare("select PRIX from PRODUIT where NOM= :nom");
+    query.bindValue(":nom",prod);
+    query.exec();
+    query.next();
+    float prix=query.value(0).toFloat();
+
+
+    int res=ui->lineEdit_quantite_com->text().toInt();
+    QString nom=ui->lineEdit_nom_com->text();
+    QString prenom=ui->lineEdit_prenom_com->text();
+    QString adresse=ui->lineEdit_adresse_com->text();
+    QString mail=ui->lineEdit_mail_com->text();
+    query2.prepare("select nom from COMMANDE where NOM=:nom");
+    query2.bindValue(":nom",nom);
+
+    query2.exec();
+    query2.next();
+    QString name=query2.value(0).toString();
+
+    if(name==nom)
+    {
+
+
+        query3.prepare("select PRIX_TOT from COMMANDE where NOM= :nom");
+       query3.bindValue(":nom",nom);
+       query3.exec();
+       query3.next();
+       float prix_tot=query.value(0).toFloat();
+
+
+
+
+
+
+        float somme=prix_tot+prix*res;
+        cout<<somme;
+        QString res2 = QString::number(somme);
+
+
+
+        query4.prepare("update COMMANDE set prix_tot=:prix where NOM=:nom");
+
+        query4.bindValue(":prix",res2);
+
+        query4.bindValue(":nom",nom);
+
+        query4.exec();
+
+
+    }
+    else
+    {
+    Commande C(nom,prenom,adresse,mail,res,prix*res);
+    bool test=C.ajouter_com();
+    if(test )
+    {
+        ui->table_commande->setModel(cm.afficher_com());
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                QObject::tr("ajouter effectué\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+
+    }
+    else
+        QMessageBox::information(nullptr, QObject::tr("not ok"),
+                QObject::tr("ajouter non effectué\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+}
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    QSqlQuery query2;
+    int id= ui->comboBox_id3_com->currentText().toInt();
+
+    query2.prepare("select id_command from COMMANDE where id_command=:id");
+    query2.bindValue(":id",id);
+
+    query2.exec();
+    query2.next();
+    int name=query2.value(0).toInt();
+    cout<<name;
+
+
+    if(name==id)
+    {
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                QObject::tr("id existe\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+
+    bool test=cm.supprimer_com(id);
+
+
+
+
+
+
+
+    if(test )
+    {ui->table_commande->setModel(cm.afficher_com());
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                QObject::tr("supprimer effectué\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+
+    }
+    else
+        QMessageBox::information(nullptr, QObject::tr("not ok"),
+                QObject::tr("supprimer non effectué\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+}
+    else
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                QObject::tr("id n'existe pas\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{QString prod= ui->comboBox_2_com->currentText();
+
+     QSqlQuery query,query2;
+     query.prepare("select PRIX from PRODUIT where NOM= :nom");
+    query.bindValue(":nom",prod);
+    query.exec();
+    query.next();
+    float prix=query.value(0).toFloat();
+
+
+
+
+    int id= ui->comboBox_id4_com->currentText().toInt();
+    int res=ui->lineEdit_55_com->text().toInt();
+    QString nom=ui->lineEdit_1_com->text();
+    QString prenom=ui->lineEdit_2_com->text();
+    QString adresse=ui->lineEdit_3_com->text();
+    QString mail=ui->lineEdit_4_com->text();
+    int etat=ui->lineEdit_5_com->text().toInt();
+    Commande C(nom,prenom,adresse,mail,res,prix*res);
+    if(etat==0||etat==1)
+{
+
+
+    bool test=C.modifier_com(id);
+    if(test )
+    {query.prepare("update COMMANDE set etat=:etat where ID_COMMAND=:id");
+        query.bindValue(":etat",etat);
+        query.bindValue(":id",id);
+
+        query.exec();
+        ui->table_commande->setModel(cm.afficher_com());
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                QObject::tr("modifier effectué\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+
+    }
+    else
+        QMessageBox::information(nullptr, QObject::tr("not ok"),
+                QObject::tr("modifier non effectué\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+    }
+    else
+        QMessageBox::information(nullptr, QObject::tr("not ok"),
+                QObject::tr("etat non valid\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    QSqlQuery query;
+    QString nom=ui->recherche_com->text();
+
+    query.prepare("select* from COMMANDE where NOM= :nom");
+    query.bindValue(":nom",nom);
+    query.exec();
+
+    QSqlQueryModel* model=new QSqlQueryModel();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_COMMAND"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("adresse"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("mail"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("quantite"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("etat"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("prix_totale"));
+
+
+     ui->tableView_recherche_com->setModel(model);
+
+
+}
+
+void MainWindow::on_tri_clicked()
+{
+
+
+    QSqlQueryModel* model=new QSqlQueryModel();
+    model->setQuery("select* from COMMANDE  order by PRIX_TOT desc ");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_COMMAND"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("adresse"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("mail"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("quantite"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("etat"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("prix_totale"));
+
+     ui->table_view_tri_com->setModel(model);
+
+
+}
+
+void MainWindow::on_tri_2_clicked()
+{
+
+    QSqlQueryModel* model=new QSqlQueryModel();
+    model->setQuery("select* from COMMANDE order by PRIX_TOT ");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_COMMAND"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("adresse"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("mail"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("quantite"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("etat"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("prix_totale"));
+
+
+     ui->table_view_tri_2_com->setModel(model);
+
+}
+
+
+
+void MainWindow::on_pushButton_6_clicked()
+{
+   stat_combo_com *s= new stat_combo_com();
+
+         s->setWindowTitle("statistique ComboBox");
+         s->choix_pie_com();
+         s->show();
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+
+     int id= ui->comboBox_id_com->currentText().toInt();
+
+    QSqlQuery query;
+    query.prepare("SELECT etat FROM Commande where ID_COMMAND=:id ");
+    query.bindValue(":id",id);
+    query.exec();
+    query.next();
+    int etat=query.value(0).toInt();
+    if(etat==1)
+    {
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                               QObject::tr("commande deja annuler\n"
+                                           "click cancel to exit."),QMessageBox::Cancel);
+
+
+    }
+    else if(etat==2)
+    {   QMessageBox::information(nullptr, QObject::tr("ok"),
+                                 QObject::tr("commande deja payee\n"
+                                             "click cancel to exit."),QMessageBox::Cancel);}
+    else
+    {
+        query.prepare("update COMMANDE set etat= 2 where ID_COMMAND=:id");
+        query.bindValue(":id",id);
+
+         query.exec();
+ui->table_commande->setModel(cm.afficher_com());
+    QSqlDatabase db;
+                        QTableView table_commande;
+                        QSqlQueryModel * Modal=new  QSqlQueryModel();
+
+                        QSqlQuery qry;
+                         qry.prepare("SELECT * FROM Commande where ID_COMMAND=:id ");
+                         qry.bindValue(":id",id);
+                         qry.exec();
+                         Modal->setQuery(qry);
+                         table_commande.setModel(Modal);
+
+
+
+                         db.close();
+
+
+                         QString strStream;
+                         QTextStream out(&strStream);
+
+
+                         const int rowCount = table_commande.model()->rowCount();
+                         const int columnCount =  table_commande.model()->columnCount();
+
+
+                         const QString strTitle ="Document";
+
+
+                         out <<  "<html>\n"
+                                 "<img src='C:/Users/Akram/Pictures/R.png' height='120' width='120'/>"
+                             "<head>\n"
+                                 "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                                 "<img src='C:/Users/Akram/Pictures/R.png.png'>"
+                             <<  QString("<title>%1</title>\n").arg(strTitle)
+                             <<  "</head>\n"
+                             "<body bgcolor=#ffffff link=#5000A0>\n"
+                            << QString("<h3 style=\" font-size: 50px; font-family: Arial, Helvetica, sans-serif; color: #b80b32; font-weight: lighter; text-align: center;\">%1</h3>\n").arg("COMMANDE")
+                            <<"<br>"
+
+                            <<"<table border=1 cellspacing=0 cellpadding=2 width=\"100%\">\n";
+                         out << "<thead><tr bgcolor=#f0f0f0>";
+                         for (int column = 0; column < columnCount; column++)
+                             if (!table_commande.isColumnHidden(column))
+                                 out << QString("<th>%1</th>").arg(table_commande.model()->headerData(column, Qt::Horizontal).toString());
+                         out << "</tr></thead>\n";
+
+                         for (int row = 0; row < rowCount; row++) {
+                             out << "<tr>";
+                             for (int column = 0; column < columnCount; column++) {
+                                 if (!table_commande.isColumnHidden(column)) {
+                                     QString data = table_commande.model()->data(table_commande.model()->index(row, column)).toString().simplified();
+                                     out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                                 }
+                             }
+                             out << "</tr>\n";
+                         }
+                         out <<  "</table>\n"
+                                 "<br><br>"
+                                 <<"<br>"
+                                 <<"<table border=1 cellspacing=0 cellpadding=2>\n";
+
+
+                             out << "<thead><tr bgcolor=#f0f0f0>";
+
+                                 out <<  "</table>\n"
+
+                             "</body>\n"
+                             "</html>\n";
+
+                         QTextDocument *document = new QTextDocument();
+                         document->setHtml(strStream);
+
+                         QPrinter printer;
+                         QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+                         if (dialog->exec() == QDialog::Accepted) {
+
+                             QLabel lab;
+                              QPixmap pixmap("C:/Users/Akram/Pictures/R.png");
+                             lab.setPixmap(pixmap);
+                             QPainter painter(&lab);
+                             //QPrinter printer(QPrinter::PrinterResolution);
+
+                             //pixmap.load("aze.png");
+                            // painter.drawPixmap(0,0,this->width(),this->height(),pixmap);
+                            // painter.drawPixmap(10,10,50,50, pixmap);
+
+                             document->print(&printer);
+                         }
+
+
+                         printer.setOutputFormat(QPrinter::PdfFormat);
+                         printer.setPaperSize(QPrinter::A4);
+                         printer.setOutputFileName("Document.pdf");
+                         printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+
+
+
+                         delete document;
+    }
+}
+
+
+
+
+
+//-----------------------------------------------------------------------------------
+
+
+
+void MainWindow::on_pushButton_5_clicked()
+{
+      ui->table_commande->setModel(cm.afficher_com());
+}
+
+void MainWindow::on_generer2_clicked()
+{
+    QSqlQueryModel* model=new QSqlQueryModel();
+    model->setQuery("select NOM from PRODUIT");
+    ui->comboBox_com->setModel(model);
+}
+
+void MainWindow::on_generer3_clicked()
+{
+    QSqlQueryModel* model=new QSqlQueryModel();
+    model->setQuery("select NOM from PRODUIT");
+     ui->comboBox_2_com->setModel(model);
+}
+
+void MainWindow::on_generer4_clicked()
+{
+    QSqlQueryModel* model2=new QSqlQueryModel();
+    model2->setQuery("select ID_COMMAND from COMMANDE");
+    ui->comboBox_id3_com->setModel(model2);
+}
+
+void MainWindow::on_generer5_clicked()
+{
+    QSqlQueryModel* model2=new QSqlQueryModel();
+    model2->setQuery("select ID_COMMAND from COMMANDE");
+    ui->comboBox_id_com->setModel(model2);
+}

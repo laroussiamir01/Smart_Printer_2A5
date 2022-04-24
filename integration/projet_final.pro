@@ -5,11 +5,12 @@ QT += charts
 QT += printsupport
 QT += serialport
 
-CONFIG += console
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
+CONFIG += console
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -26,6 +27,7 @@ SOURCES += \
     achat.cpp \
     arduino.cpp \
     client.cpp \
+    commande.cpp \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -38,6 +40,7 @@ HEADERS += \
     achat.h \
     arduino.h \
     client.h \
+    commande.h \
     connection.h \
     mainwindow.h \
     materiel.h \
@@ -45,12 +48,14 @@ HEADERS += \
     reclamation.h \
     service.h \
     stat_combo.h \
+    stat_combo_com.h \
     stat_combo_mat.h \
     stat_combo_perso.h
 
 FORMS += \
     mainwindow.ui \
     stat_combo.ui \
+    stat_combo_com.ui \
     stat_combo_mat.ui \
     stat_combo_perso.ui
 
@@ -58,3 +63,4 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+STATECHARTS +=

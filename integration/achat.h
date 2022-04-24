@@ -36,7 +36,7 @@ public:
     void setPrix(int);
 
 // fonctionnalites de base relatives a lentite achat
-    bool ajouter();
+    bool ajoutermat();
 QSqlQueryModel* affichermat();
 QSqlQueryModel * recherchermat(const QString &rech);
 

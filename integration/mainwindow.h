@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "commande.h"
 #include "client.h"
 #include "reclamation.h"
 #include "achat.h"
@@ -33,6 +33,7 @@ private slots:
 
     void on_pushButton_service_clicked();
     void on_pushButton_materiel_clicked();
+    void on_pushButton_commande_clicked();
 
 //----------client----------------------------------------------------
     void on_ajouter_client_clicked();
@@ -152,11 +153,44 @@ void on_pb_traitement_clicked();
 void on_pb_regler_clicked();
 
 void on_pb_achat_clicked();
+//---------------------------commande--------------------------------------------
+void on_pushButton_clicked();
+
+void on_pushButton_3_clicked();
+
+void on_pushButton_2_clicked();
+
+void on_pushButton_4_clicked();
+
+void on_tri_clicked();
+
+void on_tri_2_clicked();
+
+//   void on_pushButton_5_clicked();
+
+void on_pushButton_6_clicked();
+
+void on_pushButton_7_clicked();
+
+//----------------------------------------------------------------------------
 
 
 
 
 
+
+
+
+
+void on_pushButton_5_clicked();
+
+void on_generer2_clicked();
+
+void on_generer3_clicked();
+
+void on_generer4_clicked();
+
+void on_generer5_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -165,10 +199,12 @@ private:
     client tmpfidele;
     reclamation tmpreclamation;
      service tmpservice;
+      Commande cm;
     Arduino A;
     QByteArray data; //variable contenant les donnes
     MATERIEL M;
     ACHAT a;
+
 
 
 };

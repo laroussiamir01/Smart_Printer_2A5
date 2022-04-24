@@ -24,3 +24,8 @@ test=true;
     return  test;
 }
 void Connection::closeConnection(){db.close();}
+
+
+
+
+

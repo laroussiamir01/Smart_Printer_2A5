@@ -56,7 +56,7 @@ void ACHAT::setnb(int nb_materiel){
 
 
 
-bool ACHAT::ajouter(){
+bool ACHAT::ajoutermat(){
   QSqlQuery query;
 
 

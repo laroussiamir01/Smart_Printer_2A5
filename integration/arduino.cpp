@@ -62,9 +62,9 @@ int Arduino::close_arduino()
     if(serial->isReadable()){
          data=serial->readAll(); //récupérer les données reçues
 
-
+ return data;
     }
-     return data;
+
  }
 
 
