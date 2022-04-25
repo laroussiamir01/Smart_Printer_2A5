@@ -3,6 +3,7 @@
 #include<achat.h>
 #include <QMainWindow>
 #include <materiel.h>
+#include <arduino.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -54,9 +55,15 @@ private slots:
 
     void on_pb_achat_clicked();
 
+    void on_pushButton_clicked();
+    void notif();
+
 private:
     Ui::MainWindow *ui;
     MATERIEL M;
     ACHAT A;
+    QByteArray data;
+    Arduino a;
+
 };
 #endif // MAINWINDOW_H
