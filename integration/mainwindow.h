@@ -181,7 +181,6 @@ void on_pushButton_7_clicked();
 
 
 
-
 void on_pushButton_5_clicked();
 
 void on_generer2_clicked();
@@ -191,6 +190,18 @@ void on_generer3_clicked();
 void on_generer4_clicked();
 
 void on_generer5_clicked();
+
+void on_quitter_ajouter_perso_clicked();
+
+void on_quitter_ajouter_client_clicked();
+
+void on_quitter_ajouter_ser_clicked();
+
+void on_quitter_ajouter_mat_clicked();
+
+void on_quitter_ajouter_com_clicked();
+
+void on_quitter_menu_clicked();
 
 private:
     Ui::MainWindow *ui;

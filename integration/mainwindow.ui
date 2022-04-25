@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>878</width>
+    <height>561</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,17 +17,17 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>10</y>
-      <width>781</width>
-      <height>491</height>
+      <x>10</x>
+      <y>0</y>
+      <width>681</width>
+      <height>451</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QPushButton" name="pushButton_personel">
@@ -95,6 +95,42 @@
        <string>Commande</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="quitter_menu">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>400</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>QUITTER</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_74">
+      <property name="geometry">
+       <rect>
+        <x>-60</x>
+        <y>-10</y>
+        <width>801</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+      </property>
+     </widget>
+     <zorder>label_74</zorder>
+     <zorder>pushButton_personel</zorder>
+     <zorder>pushButton_client</zorder>
+     <zorder>pushButton_service</zorder>
+     <zorder>pushButton_materiel</zorder>
+     <zorder>pushButton_commande</zorder>
+     <zorder>quitter_menu</zorder>
     </widget>
     <widget class="QWidget" name="page_1">
      <widget class="QTabWidget" name="tabAjouter">
@@ -110,17 +146,17 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>ADD</string>
+        <string>ajouter</string>
        </attribute>
        <widget class="QGroupBox" name="groupBox">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>30</y>
+          <x>0</x>
+          <y>10</y>
           <width>631</width>
           <height>301</height>
          </rect>
@@ -260,8 +296,8 @@
        <widget class="QLabel" name="label_15">
         <property name="geometry">
          <rect>
-          <x>-14</x>
-          <y>-6</y>
+          <x>-10</x>
+          <y>20</y>
           <width>741</width>
           <height>411</height>
          </rect>
@@ -295,19 +331,36 @@
          <pixmap>../../../Desktop/272913746_990774311522570_960516843833593149_n.jpg</pixmap>
         </property>
        </widget>
+       <widget class="QLabel" name="label_75">
+        <property name="geometry">
+         <rect>
+          <x>-90</x>
+          <y>-7</y>
+          <width>721</width>
+          <height>371</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+        </property>
+       </widget>
+       <zorder>label_75</zorder>
        <zorder>label_15</zorder>
-       <zorder>label_9</zorder>
        <zorder>groupBox</zorder>
+       <zorder>label_9</zorder>
       </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>DISPLAY</string>
+        <string>afficher</string>
        </attribute>
        <widget class="QGroupBox" name="groupBox_4">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>40</y>
+          <x>10</x>
+          <y>20</y>
           <width>591</width>
           <height>301</height>
          </rect>
@@ -341,28 +394,6 @@
           <string notr="true"/>
          </property>
         </widget>
-        <widget class="QLabel" name="label_10">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>-120</x>
-           <y>-130</y>
-           <width>1371</width>
-           <height>611</height>
-          </rect>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>../../../Desktop/272913746_990774311522570_960516843833593149_n.jpg</pixmap>
-         </property>
-        </widget>
         <widget class="QPushButton" name="quitter_afficher_perso">
          <property name="geometry">
           <rect>
@@ -376,33 +407,11 @@
           <string>Quitter</string>
          </property>
         </widget>
-        <zorder>label_10</zorder>
-        <zorder>afficherperso</zorder>
-        <zorder>tableViewperso</zorder>
-        <zorder>quitter_afficher_perso</zorder>
        </widget>
-       <widget class="QLabel" name="label_16">
-        <property name="geometry">
-         <rect>
-          <x>-70</x>
-          <y>-100</y>
-          <width>831</width>
-          <height>571</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>../../../Desktop/minimalism-colorful-beehive-patterns-texture-wallpaper-preview.jpg</pixmap>
-        </property>
-       </widget>
-       <zorder>label_16</zorder>
-       <zorder>groupBox_4</zorder>
       </widget>
       <widget class="QWidget" name="tab_5">
        <attribute name="title">
-        <string>UPDATE</string>
+        <string>modifier</string>
        </attribute>
        <widget class="QGroupBox" name="groupBox_2">
         <property name="geometry">
@@ -514,6 +523,31 @@
           <string>Quitter</string>
          </property>
         </widget>
+        <widget class="QLabel" name="label_77">
+         <property name="geometry">
+          <rect>
+           <x>-120</x>
+           <y>-17</y>
+           <width>741</width>
+           <height>351</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+         </property>
+        </widget>
+        <zorder>label_77</zorder>
+        <zorder>label_5</zorder>
+        <zorder>label_7</zorder>
+        <zorder>label_11</zorder>
+        <zorder>lineEditCin_modifperso</zorder>
+        <zorder>lineEdit_pren_modifperso</zorder>
+        <zorder>lineEdit_nom_modifperso</zorder>
+        <zorder>modifierperso</zorder>
+        <zorder>quitter_modifier_perso</zorder>
        </widget>
        <widget class="QLabel" name="label_17">
         <property name="geometry">
@@ -536,7 +570,7 @@
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>DELETE</string>
+        <string>supprimer</string>
        </attribute>
        <widget class="QGroupBox" name="groupBox_3">
         <property name="geometry">
@@ -618,6 +652,27 @@
           <string>Quitter</string>
          </property>
         </widget>
+        <widget class="QLabel" name="label_78">
+         <property name="geometry">
+          <rect>
+           <x>-120</x>
+           <y>-30</y>
+           <width>641</width>
+           <height>361</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+         </property>
+        </widget>
+        <zorder>label_78</zorder>
+        <zorder>label_18</zorder>
+        <zorder>lineEditCin_suppperso</zorder>
+        <zorder>supprimerperso</zorder>
+        <zorder>quitter_supprimer_perso</zorder>
        </widget>
        <widget class="QLabel" name="label_19">
         <property name="enabled">
@@ -663,7 +718,7 @@
       </widget>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
-        <string>RECHERCHE</string>
+        <string>recherche</string>
        </attribute>
        <widget class="QPushButton" name="rechercherperso">
         <property name="geometry">
@@ -701,7 +756,7 @@
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
-        <string>TRIE</string>
+        <string>tri</string>
        </attribute>
        <widget class="QGroupBox" name="groupBox_5">
         <property name="geometry">
@@ -768,7 +823,7 @@
       </widget>
       <widget class="QWidget" name="tab_6">
        <attribute name="title">
-        <string>STAT</string>
+        <string>stat</string>
        </attribute>
        <widget class="QPushButton" name="pushButtonperso">
         <property name="geometry">
@@ -786,7 +841,7 @@
       </widget>
       <widget class="QWidget" name="tab_8">
        <attribute name="title">
-        <string>CONGE</string>
+        <string>conge</string>
        </attribute>
        <widget class="QLineEdit" name="lineEdit_3perso">
         <property name="geometry">
@@ -875,10 +930,33 @@
          <string>Quitter</string>
         </property>
        </widget>
+       <widget class="QLabel" name="label_80">
+        <property name="geometry">
+         <rect>
+          <x>-80</x>
+          <y>20</y>
+          <width>641</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+        </property>
+       </widget>
+       <zorder>label_80</zorder>
+       <zorder>lineEdit_3perso</zorder>
+       <zorder>label_21</zorder>
+       <zorder>pushButton_2perso</zorder>
+       <zorder>label_22</zorder>
+       <zorder>comboBoxperso</zorder>
+       <zorder>quitter_conge_perso</zorder>
       </widget>
       <widget class="QWidget" name="tab_9">
        <attribute name="title">
-        <string>PRIME DE RENDEMENT</string>
+        <string>prime de rendement</string>
        </attribute>
        <widget class="QLineEdit" name="lineEditperso">
         <property name="geometry">
@@ -952,6 +1030,29 @@
          <string>Quitter</string>
         </property>
        </widget>
+       <widget class="QLabel" name="label_81">
+        <property name="geometry">
+         <rect>
+          <x>-70</x>
+          <y>10</y>
+          <width>631</width>
+          <height>341</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+        </property>
+       </widget>
+       <zorder>label_81</zorder>
+       <zorder>lineEditperso</zorder>
+       <zorder>label_23</zorder>
+       <zorder>lineEdit_2perso</zorder>
+       <zorder>label_24</zorder>
+       <zorder>ajouter_primeperso</zorder>
+       <zorder>quitter_prime_perso</zorder>
       </widget>
      </widget>
     </widget>
@@ -982,7 +1083,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>8</number>
         </property>
         <widget class="QWidget" name="tab_amir1">
          <attribute name="title">
@@ -1169,23 +1270,23 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
             </rect>
            </property>
           </widget>
-          <widget class="QLabel" name="label_27">
+          <widget class="QLabel" name="label_92">
            <property name="geometry">
             <rect>
-             <x>90</x>
-             <y>0</y>
-             <width>561</width>
-             <height>371</height>
+             <x>-130</x>
+             <y>20</y>
+             <width>601</width>
+             <height>311</height>
             </rect>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../../../Bureau/background/imprimante.png</pixmap>
+            <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
            </property>
           </widget>
-          <zorder>label_27</zorder>
+          <zorder>label_92</zorder>
           <zorder>label_6</zorder>
           <zorder>LineEdit_Id_client</zorder>
           <zorder>label_31</zorder>
@@ -1382,23 +1483,23 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
             <bool>true</bool>
            </property>
           </widget>
-          <widget class="QLabel" name="label_28">
+          <widget class="QLabel" name="label_93">
            <property name="geometry">
             <rect>
-             <x>80</x>
-             <y>0</y>
-             <width>561</width>
-             <height>391</height>
+             <x>-110</x>
+             <y>20</y>
+             <width>601</width>
+             <height>311</height>
             </rect>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../../../Bureau/background/imprimante.png</pixmap>
+            <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
            </property>
           </widget>
-          <zorder>label_28</zorder>
+          <zorder>label_93</zorder>
           <zorder>label_40</zorder>
           <zorder>lineEdit_nom_modif_client</zorder>
           <zorder>label_41</zorder>
@@ -1549,23 +1650,23 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
             <bool>true</bool>
            </property>
           </widget>
-          <widget class="QLabel" name="label_35">
+          <widget class="QLabel" name="label_94">
            <property name="geometry">
             <rect>
-             <x>70</x>
-             <y>-10</y>
-             <width>561</width>
-             <height>391</height>
+             <x>-150</x>
+             <y>20</y>
+             <width>601</width>
+             <height>311</height>
             </rect>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../../../Bureau/background/imprimante.png</pixmap>
+            <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
            </property>
           </widget>
-          <zorder>label_35</zorder>
+          <zorder>label_94</zorder>
           <zorder>supprimer_client</zorder>
           <zorder>label_46</zorder>
           <zorder>quitter_supprimer_client</zorder>
@@ -1753,29 +1854,6 @@ background-repeat:no-repeat;
            <bool>true</bool>
           </property>
          </widget>
-         <widget class="QLabel" name="label_54">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>20</y>
-            <width>561</width>
-            <height>391</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap>../../../Bureau/background/imprimante.png</pixmap>
-          </property>
-         </widget>
-         <zorder>label_54</zorder>
-         <zorder>tableView_client</zorder>
-         <zorder>label_4</zorder>
-         <zorder>pushButton_PDFProd_3</zorder>
-         <zorder>pushButton_9</zorder>
-         <zorder>quitter_afficher_client</zorder>
-         <zorder>afficher_client</zorder>
         </widget>
         <widget class="QWidget" name="tab_amir5">
          <attribute name="title">
@@ -1902,28 +1980,6 @@ background-repeat:no-repeat;
             <string>Tri Nom</string>
            </property>
           </widget>
-          <widget class="QLabel" name="label_55">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>-10</y>
-             <width>561</width>
-             <height>391</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="pixmap">
-            <pixmap>../../../Bureau/background/imprimante.png</pixmap>
-           </property>
-          </widget>
-          <zorder>label_55</zorder>
-          <zorder>suppProduit_client</zorder>
-          <zorder>quitter_tri_client</zorder>
-          <zorder>tableView_tri_client</zorder>
-          <zorder>radioButton_TRInProdPrix_client</zorder>
-          <zorder>radioButton_TRInProd_client</zorder>
          </widget>
         </widget>
         <widget class="QWidget" name="tab_amir6">
@@ -2060,28 +2116,6 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
             </rect>
            </property>
           </widget>
-          <widget class="QLabel" name="label_56">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>561</width>
-             <height>371</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="pixmap">
-            <pixmap>../../../Bureau/background/imprimante.png</pixmap>
-           </property>
-          </widget>
-          <zorder>label_56</zorder>
-          <zorder>quitter_recherche_client</zorder>
-          <zorder>rechercher_client</zorder>
-          <zorder>label_8</zorder>
-          <zorder>tableView_affirechercher_client</zorder>
-          <zorder>ProduitNom_rechecher_client</zorder>
          </widget>
         </widget>
         <widget class="QWidget" name="tab_amir7">
@@ -2281,23 +2315,23 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
             </rect>
            </property>
           </widget>
-          <widget class="QLabel" name="label_29">
+          <widget class="QLabel" name="label_95">
            <property name="geometry">
             <rect>
-             <x>80</x>
-             <y>0</y>
-             <width>561</width>
-             <height>391</height>
+             <x>-110</x>
+             <y>20</y>
+             <width>601</width>
+             <height>311</height>
             </rect>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../../../Bureau/background/imprimante.png</pixmap>
+            <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
            </property>
           </widget>
-          <zorder>label_29</zorder>
+          <zorder>label_95</zorder>
           <zorder>enregister_fidele</zorder>
           <zorder>quitter_fidele_client</zorder>
           <zorder>comboBox_fidele</zorder>
@@ -2345,26 +2379,26 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
            </rect>
           </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string>OUTPUT</string>
           </property>
          </widget>
-         <widget class="QLabel" name="label_44">
+         <widget class="QLabel" name="label_96">
           <property name="geometry">
            <rect>
-            <x>100</x>
-            <y>10</y>
-            <width>561</width>
-            <height>391</height>
+            <x>-70</x>
+            <y>30</y>
+            <width>601</width>
+            <height>311</height>
            </rect>
           </property>
           <property name="text">
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>../../../Bureau/background/imprimante.png</pixmap>
+           <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
           </property>
          </widget>
-         <zorder>label_44</zorder>
+         <zorder>label_96</zorder>
          <zorder>pushButton_arduino_on</zorder>
          <zorder>pushButton_arduino_off</zorder>
          <zorder>label_arduino</zorder>
@@ -2385,7 +2419,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab_amir10">
          <attribute name="title">
@@ -3110,7 +3144,7 @@ background-repeat:no-repeat;
          </rect>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_ser1">
          <attribute name="title">
@@ -3121,8 +3155,8 @@ background-repeat:no-repeat;
            <rect>
             <x>0</x>
             <y>10</y>
-            <width>561</width>
-            <height>231</height>
+            <width>611</width>
+            <height>301</height>
            </rect>
           </property>
           <property name="font">
@@ -3280,6 +3314,31 @@ background-repeat:no-repeat;
             </rect>
            </property>
           </widget>
+          <widget class="QLabel" name="label_82">
+           <property name="geometry">
+            <rect>
+             <x>-80</x>
+             <y>20</y>
+             <width>671</width>
+             <height>291</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+           </property>
+          </widget>
+          <zorder>label_82</zorder>
+          <zorder>label_30</zorder>
+          <zorder>LineEdit_Nom_ser</zorder>
+          <zorder>ajouter_service</zorder>
+          <zorder>quitter_ajouter_ser</zorder>
+          <zorder>label_32</zorder>
+          <zorder>LineEdit_Prix_ser</zorder>
+          <zorder>label_34</zorder>
+          <zorder>LineEdit_Qte_ser</zorder>
          </widget>
         </widget>
         <widget class="QWidget" name="tab_ser2">
@@ -3291,8 +3350,8 @@ background-repeat:no-repeat;
            <rect>
             <x>10</x>
             <y>10</y>
-            <width>571</width>
-            <height>231</height>
+            <width>611</width>
+            <height>301</height>
            </rect>
           </property>
           <property name="font">
@@ -3469,6 +3528,33 @@ background-repeat:no-repeat;
             <string>Id</string>
            </property>
           </widget>
+          <widget class="QLabel" name="label_83">
+           <property name="geometry">
+            <rect>
+             <x>-110</x>
+             <y>20</y>
+             <width>611</width>
+             <height>291</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+           </property>
+          </widget>
+          <zorder>label_83</zorder>
+          <zorder>label_36</zorder>
+          <zorder>lineEdit_prix_modif_ser</zorder>
+          <zorder>label_37</zorder>
+          <zorder>modifier_service</zorder>
+          <zorder>label_38</zorder>
+          <zorder>lineEdit_qte_modif_ser</zorder>
+          <zorder>quitter_modifier_ser</zorder>
+          <zorder>lineEdit_nom_modif_ser</zorder>
+          <zorder>lineEdit_id_modif_ser</zorder>
+          <zorder>label_39</zorder>
          </widget>
         </widget>
         <widget class="QWidget" name="Tab_ser_3">
@@ -3480,8 +3566,8 @@ background-repeat:no-repeat;
            <rect>
             <x>20</x>
             <y>20</y>
-            <width>511</width>
-            <height>221</height>
+            <width>571</width>
+            <height>291</height>
            </rect>
           </property>
           <property name="font">
@@ -3586,6 +3672,27 @@ background-repeat:no-repeat;
             </rect>
            </property>
           </widget>
+          <widget class="QLabel" name="label_84">
+           <property name="geometry">
+            <rect>
+             <x>-140</x>
+             <y>10</y>
+             <width>631</width>
+             <height>291</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+           </property>
+          </widget>
+          <zorder>label_84</zorder>
+          <zorder>supprimer_service</zorder>
+          <zorder>label_43</zorder>
+          <zorder>quitter_supprimer_ser</zorder>
+          <zorder>lineEdit_IDS_ser</zorder>
          </widget>
         </widget>
         <widget class="QWidget" name="tab_ser_4">
@@ -3702,7 +3809,7 @@ background-repeat:no-repeat;
             <x>10</x>
             <y>20</y>
             <width>761</width>
-            <height>221</height>
+            <height>301</height>
            </rect>
           </property>
           <property name="font">
@@ -3804,7 +3911,7 @@ background-repeat:no-repeat;
             <x>10</x>
             <y>20</y>
             <width>761</width>
-            <height>251</height>
+            <height>321</height>
            </rect>
           </property>
           <property name="font">
@@ -3981,7 +4088,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
        </size>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_mat">
        <attribute name="title">
@@ -4131,6 +4238,35 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
          <string>Quitter</string>
         </property>
        </widget>
+       <widget class="QLabel" name="label_85">
+        <property name="geometry">
+         <rect>
+          <x>-80</x>
+          <y>30</y>
+          <width>601</width>
+          <height>331</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+        </property>
+       </widget>
+       <zorder>label_85</zorder>
+       <zorder>label_id_mat</zorder>
+       <zorder>le_id</zorder>
+       <zorder>pb_ajout</zorder>
+       <zorder>label_nom_mat</zorder>
+       <zorder>label_cat_mat</zorder>
+       <zorder>le_nom</zorder>
+       <zorder>le_cat</zorder>
+       <zorder>label_prix_mat</zorder>
+       <zorder>le_prix</zorder>
+       <zorder>le_etat</zorder>
+       <zorder>label_etat_mat</zorder>
+       <zorder>quitter_ajouter_mat</zorder>
       </widget>
       <widget class="QWidget" name="tab_mat1">
        <attribute name="title">
@@ -4185,6 +4321,27 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
          <string>Quitter</string>
         </property>
        </widget>
+       <widget class="QLabel" name="label_86">
+        <property name="geometry">
+         <rect>
+          <x>-90</x>
+          <y>40</y>
+          <width>601</width>
+          <height>311</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+        </property>
+       </widget>
+       <zorder>label_86</zorder>
+       <zorder>label_id_sup_mat</zorder>
+       <zorder>le_id_supp</zorder>
+       <zorder>pb_supprimer</zorder>
+       <zorder>quitter_supprimer_mat</zorder>
       </widget>
       <widget class="QWidget" name="tab_mat2">
        <attribute name="title">
@@ -4346,6 +4503,35 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
          <string>Quitter</string>
         </property>
        </widget>
+       <widget class="QLabel" name="label_87">
+        <property name="geometry">
+         <rect>
+          <x>-80</x>
+          <y>30</y>
+          <width>601</width>
+          <height>311</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+        </property>
+       </widget>
+       <zorder>label_87</zorder>
+       <zorder>pb_modifier</zorder>
+       <zorder>label_id_modif_mat</zorder>
+       <zorder>le_id_3</zorder>
+       <zorder>le_nom_3</zorder>
+       <zorder>label_nom_modif_mat</zorder>
+       <zorder>label_cat_modif_mat</zorder>
+       <zorder>le_cat_3</zorder>
+       <zorder>label_prix_modif_mat</zorder>
+       <zorder>le_prix_3</zorder>
+       <zorder>label_etat_modif_mat</zorder>
+       <zorder>le_etat_3</zorder>
+       <zorder>quitter_modifier_mat</zorder>
       </widget>
       <widget class="QWidget" name="tab_mat4">
        <attribute name="title">
@@ -4715,7 +4901,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
         <x>0</x>
         <y>10</y>
         <width>671</width>
-        <height>361</height>
+        <height>401</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -4728,10 +4914,10 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
        <widget class="QGroupBox" name="groupBox_6">
         <property name="geometry">
          <rect>
-          <x>70</x>
+          <x>30</x>
           <y>20</y>
-          <width>501</width>
-          <height>241</height>
+          <width>571</width>
+          <height>321</height>
          </rect>
         </property>
         <property name="title">
@@ -4939,6 +5125,38 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
           <string>Generer</string>
          </property>
         </widget>
+        <widget class="QLabel" name="label_88">
+         <property name="geometry">
+          <rect>
+           <x>-100</x>
+           <y>30</y>
+           <width>601</width>
+           <height>311</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+         </property>
+        </widget>
+        <zorder>label_88</zorder>
+        <zorder>comboBox_com</zorder>
+        <zorder>pushButton</zorder>
+        <zorder>label_57</zorder>
+        <zorder>lineEdit_prenom_com</zorder>
+        <zorder>label_58</zorder>
+        <zorder>label_59</zorder>
+        <zorder>lineEdit_quantite_com</zorder>
+        <zorder>lineEdit_nom_com</zorder>
+        <zorder>label_60</zorder>
+        <zorder>label_61</zorder>
+        <zorder>label_62</zorder>
+        <zorder>lineEdit_adresse_com</zorder>
+        <zorder>lineEdit_mail_com</zorder>
+        <zorder>quitter_ajouter_com</zorder>
+        <zorder>generer2</zorder>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_com1">
@@ -4976,10 +5194,10 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
        <widget class="QGroupBox" name="groupBox_7">
         <property name="geometry">
          <rect>
-          <x>90</x>
+          <x>20</x>
           <y>20</y>
-          <width>451</width>
-          <height>241</height>
+          <width>611</width>
+          <height>331</height>
          </rect>
         </property>
         <property name="title">
@@ -5233,6 +5451,42 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
           <string>generer</string>
          </property>
         </widget>
+        <widget class="QLabel" name="label_89">
+         <property name="geometry">
+          <rect>
+           <x>-50</x>
+           <y>20</y>
+           <width>601</width>
+           <height>311</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+         </property>
+        </widget>
+        <zorder>label_89</zorder>
+        <zorder>comboBox_2_com</zorder>
+        <zorder>pushButton_2</zorder>
+        <zorder>label_63</zorder>
+        <zorder>lineEdit_2_com</zorder>
+        <zorder>label_64</zorder>
+        <zorder>label_65</zorder>
+        <zorder>lineEdit_55_com</zorder>
+        <zorder>lineEdit_1_com</zorder>
+        <zorder>label_66</zorder>
+        <zorder>label_67</zorder>
+        <zorder>label_68</zorder>
+        <zorder>lineEdit_3_com</zorder>
+        <zorder>lineEdit_4_com</zorder>
+        <zorder>label_69</zorder>
+        <zorder>comboBox_id4_com</zorder>
+        <zorder>lineEdit_5_com</zorder>
+        <zorder>label_70</zorder>
+        <zorder>quitter_modifier_com</zorder>
+        <zorder>generer3</zorder>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_com3">
@@ -5242,10 +5496,10 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
        <widget class="QGroupBox" name="groupBox_8">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>20</x>
           <y>10</y>
-          <width>341</width>
-          <height>231</height>
+          <width>561</width>
+          <height>341</height>
          </rect>
         </property>
         <property name="title">
@@ -5313,6 +5567,28 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
           <string>generer</string>
          </property>
         </widget>
+        <widget class="QLabel" name="label_90">
+         <property name="geometry">
+          <rect>
+           <x>-110</x>
+           <y>20</y>
+           <width>601</width>
+           <height>311</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+         </property>
+        </widget>
+        <zorder>label_90</zorder>
+        <zorder>label_71</zorder>
+        <zorder>pushButton_3</zorder>
+        <zorder>comboBox_id3_com</zorder>
+        <zorder>quitter_supprimer_com</zorder>
+        <zorder>generer4</zorder>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_com4">
@@ -5468,10 +5744,10 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
        <widget class="QGroupBox" name="groupBox_com7">
         <property name="geometry">
          <rect>
-          <x>50</x>
+          <x>20</x>
           <y>10</y>
-          <width>331</width>
-          <height>231</height>
+          <width>581</width>
+          <height>361</height>
          </rect>
         </property>
         <property name="title">
@@ -5526,6 +5802,27 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
           <string>generer</string>
          </property>
         </widget>
+        <widget class="QLabel" name="label_91">
+         <property name="geometry">
+          <rect>
+           <x>-100</x>
+           <y>30</y>
+           <width>601</width>
+           <height>311</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../../Bureau/background/untitled-1.jpg</pixmap>
+         </property>
+        </widget>
+        <zorder>label_91</zorder>
+        <zorder>pushButton_7</zorder>
+        <zorder>label_73</zorder>
+        <zorder>comboBox_id_com</zorder>
+        <zorder>generer5</zorder>
        </widget>
       </widget>
      </widget>
@@ -5537,7 +5834,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;}</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>878</width>
      <height>22</height>
     </rect>
    </property>

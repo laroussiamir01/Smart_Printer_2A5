@@ -73,10 +73,13 @@ void loop() {
     // just print the pressed key
 
    if (key){
+    
     ch+=key; 
-    Serial.print(key);
+      Serial.print(ch);
+
 
    }
+     
 
 
 

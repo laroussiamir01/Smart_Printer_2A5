@@ -128,11 +128,11 @@ MainWindow::MainWindow(QWidget *parent)
                  QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
                  //le slot update_label suite à la reception du signal readyRead (reception des données).
                  //A.write_to_arduino("0");
-                 A.read_from_arduino();
-                 QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+              //   A.read_from_arduino();
+              /*   QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
                  //le slot update_label suite à la reception du signal readyRead (reception des données).
                  //A.write_to_arduino("0");
-                 A.read_from_arduino();
+                 A.read_from_arduino();   */
  // QObject::connect(arduino,SIGNAL(readyRead()),this,SLOT(readSerial()));
 //---------------------------------------------------------------------------------------------
 }
@@ -183,7 +183,7 @@ void MainWindow::on_ajouter_client_clicked()
 
    //   A.getserial()->waitForReadyRead(1000);
     data = A.read_from_arduino();
- //  cout<<data.toStdString()<< "aaaa "<<endl;
+   cout<<data.toStdString()<< "aaaa "<<endl;
   //  qDebug() data.toStdString() ;
     qDebug() << "clavier :" <<data;
 
@@ -590,12 +590,48 @@ void MainWindow::on_pushButton_arduino_off_clicked()
 
 void MainWindow::update_label()
 {
-    data=A.read_from_arduino();
-    if(data=="1")
-        ui->label_arduino->setText("succes"); //si les donnes recue de arduino via la liaison series sont egual a 1
-    else if (data=="0")
-        ui->label_arduino->setText("echec");
+  //  int a= 0;
 
+ data=A.read_from_arduino();
+
+       ui->LineEdit_Id_client->setText(data);
+
+
+
+/*
+   if(data=="1")
+        ui->LineEdit_Id_client->setText("1"); //si les donnes recue de arduino via la liaison series sont egual a 1
+    else if (data=="0")
+        ui->LineEdit_Id_client->setText("0");
+    else if (data=="2")
+        ui->LineEdit_Id_client->setText("2");
+    else if (data=="3")
+        ui->label_arduino->setText("3");
+    else if (data=="4")
+        ui->label_arduino->setText("4");
+    else if (data=="5")
+        ui->label_arduino->setText("5");
+    else if (data=="6")
+        ui->label_arduino->setText("6");
+    else if (data=="7")
+        ui->label_arduino->setText("7");
+    else if (data=="8")
+        ui->label_arduino->setText("8");
+    else if (data=="9")
+        ui->label_arduino->setText("9");
+    else if (data=="A")
+        ui->label_arduino->setText("A");
+    else if (data=="B")
+        ui->label_arduino->setText("B");
+    else if (data=="C")
+        ui->label_arduino->setText("C");
+    else if (data=="D")
+        ui->label_arduino->setText("D");
+    else if (data=="*")
+        ui->label_arduino->setText("*");
+    else if (data=="#")
+        ui->label_arduino->setText("#");
+*/
 }
 
 //-----------------------------------------------------------------------------
@@ -1286,7 +1322,7 @@ void MainWindow::on_pushButton_clicked()
 {
     QString prod= ui->comboBox_com->currentText();
      QSqlQuery query,query2,query3,query4;
-     query.prepare("select PRIX from PRODUIT where NOM= :nom");
+     query.prepare("select PRIX from SRVICE where NOM= :nom");
     query.bindValue(":nom",prod);
     query.exec();
     query.next();
@@ -1405,7 +1441,7 @@ void MainWindow::on_pushButton_2_clicked()
 {QString prod= ui->comboBox_2_com->currentText();
 
      QSqlQuery query,query2;
-     query.prepare("select PRIX from PRODUIT where NOM= :nom");
+     query.prepare("select PRIX from SERVICE where NOM= :nom");
     query.bindValue(":nom",prod);
     query.exec();
     query.next();
@@ -1672,14 +1708,14 @@ void MainWindow::on_pushButton_5_clicked()
 void MainWindow::on_generer2_clicked()
 {
     QSqlQueryModel* model=new QSqlQueryModel();
-    model->setQuery("select NOM from PRODUIT");
+    model->setQuery("select NOM from SERVICE");
     ui->comboBox_com->setModel(model);
 }
 
 void MainWindow::on_generer3_clicked()
 {
     QSqlQueryModel* model=new QSqlQueryModel();
-    model->setQuery("select NOM from PRODUIT");
+    model->setQuery("select NOM from SERVICE");
      ui->comboBox_2_com->setModel(model);
 }
 
@@ -1695,4 +1731,34 @@ void MainWindow::on_generer5_clicked()
     QSqlQueryModel* model2=new QSqlQueryModel();
     model2->setQuery("select ID_COMMAND from COMMANDE");
     ui->comboBox_id_com->setModel(model2);
+}
+
+void MainWindow::on_quitter_ajouter_perso_clicked()
+{
+      ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_quitter_ajouter_client_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_quitter_ajouter_ser_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_quitter_ajouter_mat_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_quitter_ajouter_com_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_quitter_menu_clicked()
+{
+    exit(0);
 }
