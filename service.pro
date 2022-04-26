@@ -1,6 +1,6 @@
-QT       += core gui sql charts network printsupport
+QT       += core gui sql charts network printsupport serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
+QT += serialport
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -15,12 +15,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arduino.cpp \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
     service.cpp
 
 HEADERS += \
+    arduino.h \
     connection.h \
     mainwindow.h \
     service.h

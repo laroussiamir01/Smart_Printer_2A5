@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QtSql>
 #include <QSqlDatabase>
+#include <arduino.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -43,10 +44,13 @@ private slots:
 
     void on_tabWidget_service_currentChanged(int index);
     //----------------------------------------------------------------
+    void promo();
 
 private:
     Ui::MainWindow *ui;
     service tmpservice;
+    QByteArray data;
+    Arduino A;
 
 };
 #endif // MAINWINDOW_H

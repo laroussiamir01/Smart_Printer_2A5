@@ -150,7 +150,7 @@ return model;
 bool service::PromotionPrix()
 {
     QSqlQuery query;
-    query.prepare("update service SET classement=1 ,offre=prix*0.9 WHERE qte = (SELECT max(qte) FROM service)");
+    query.prepare("update service SET classement=1 WHERE qte = (SELECT max(qte) FROM service)");
 
             return    query.exec();
 
